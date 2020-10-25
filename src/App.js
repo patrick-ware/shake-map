@@ -7,6 +7,7 @@ import DatePicker from 'react-date-picker';
 import DataModifier from './components/DataModifier/DataModifier.js';
 
 function App() {
+  const MAP_API = process.env.MAP_API;
   const [apiData, setApiData] = useState([]);
   const [minMag, setMinMag] = useState(5.0);
   const [maxMag, setMaxMag] = useState(8.0);
