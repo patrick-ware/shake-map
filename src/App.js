@@ -5,6 +5,7 @@ import BarChart from './components/BarChart/BarChart.js';
 import MagInput from './components/MagInput/MagInput.js';
 import DatePicker from 'react-date-picker';
 import DataModifier from './components/DataModifier/DataModifier.js';
+import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 function App() {
   const MAP_API = process.env.MAP_API;
