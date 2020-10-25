@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { Component, useState, useEffect, useRef } from 'react';
 import './App.css';
 // Import components
 import BarChart from './components/BarChart/BarChart.js';
 import MagInput from './components/MagInput/MagInput.js';
 import DatePicker from 'react-date-picker';
 import DataModifier from './components/DataModifier/DataModifier.js';
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+import MapSection from './components/Map/Map.js' // import the map here
 
 function App() {
-  const MAP_API = process.env.MAP_API;
   const [apiData, setApiData] = useState([]);
   const [minMag, setMinMag] = useState(5.0);
   const [maxMag, setMaxMag] = useState(8.0);
@@ -148,6 +147,7 @@ function App() {
         endDate={endDate}
         onEndChange={setEndDate}
       />
+      <MapSection location={location} zoomLevel={17} /> {/* include it here */}
       <BarChart 
         apiData={apiData}
         page={page}
