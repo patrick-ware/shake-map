@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './BarChart.css';
 
 function BarChart(props) {
+
   return (
     <div>
       <div className="BarChart">

@@ -4,12 +4,6 @@ import './Map.css';
 import { Icon, InlineIcon } from '@iconify/react';
 import mapMarkerAlt from '@iconify/icons-fa-solid/map-marker-alt';
 
-const testlocation = {
-  address: '1600 Amphitheatre Parkway, Mountain View, california.',
-  lat: 37.42216,
-  lng: -122.08427,
-  }
-
 const MAP_API = process.env.MAP_API;
 
 const LocationPin = ({ text }) => (
@@ -19,20 +13,20 @@ const LocationPin = ({ text }) => (
   </div>
 )
 
-const Map = ({ location, zoomLevel }) => (
+const Map = (props) => (
   <div className="map">
-    <h2 className="map-h2">Come Visit Us At Our Campus</h2>
+    <h2 className="map-h2" style={{color: "white"}}> TESTING</h2>
 
     <div className="google-map">
       <GoogleMapReact
         bootstrapURLKeys={{ key: MAP_API }}
-        defaultCenter={location}
-        defaultZoom={zoomLevel}
+        defaultCenter={props.location}
+        defaultZoom={props.zoomLevel}
       >
         <LocationPin
-          lat={testlocation.lat}
-          lng={testlocation.lng}
-          text={testlocation.address}
+          lat={props.location.lat}
+          lng={props.location.lng}
+          text={props.location.address}
         />
       </GoogleMapReact>
     </div>

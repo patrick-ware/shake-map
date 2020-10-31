@@ -16,6 +16,7 @@ function App() {
   const [firstRecordDate, setFirstRecordDate] = useState("");
   const [lastRecordDate, setLastRecordDate] = useState("");
   const [page, setPage] = useState(1);
+  const [coordinates, setCoordinates] = useState([0,0]);
 
   const isCurrent = useRef(false);
 
