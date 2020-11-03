@@ -20,6 +20,11 @@ function App() {
 
   const isCurrent = useRef(false);
 
+  // Get the coordinates of point
+  function getCoordinates() {
+    setCoordinates()
+  }
+
   // Modify minimum magnitude
   function minimumMagnitude(ev) {
     let value = ev.target.value;

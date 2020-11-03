@@ -11,9 +11,11 @@ function BarChart(props) {
             .map(([key, value]) => (
               <div 
                 className="BarChart-bar"
+                id={value.id}
                 key={key} 
                 style={{height: value.properties.mag*10+"%"}}
-                onClick={()=>{alert(value.properties.mag+" | "+ value.properties.place +" | "+ new Date(value.properties.time).toUTCString())}}
+                onClick={()=>{console.log("the coordinates are", value.geometry.coordinates[0]+","+value.geometry.coordinates[1])}}
+                /*onClick={()=>{alert(value.properties.mag+" | "+ value.properties.place +" | "+ new Date(value.properties.time).toUTCString())}}*/
               >
                 {value.properties.mag.toFixed(1)}
                 <div className="tooltiptext">
