@@ -16,13 +16,13 @@ function App() {
   const [firstRecordDate, setFirstRecordDate] = useState("");
   const [lastRecordDate, setLastRecordDate] = useState("");
   const [page, setPage] = useState(1);
-  const [coordinates, setCoordinates] = useState([0,0]);
+  const [coordinates, setCoordinates] = useState([]);
 
   const isCurrent = useRef(false);
 
   // Get the coordinates of point
   function getCoordinates() {
-    setCoordinates()
+    // setCoordinates(quake)
   }
 
   // Modify minimum magnitude
@@ -170,6 +170,7 @@ function App() {
         firstRecordDate={firstRecordDate}
         goToPreviousPage={goToPreviousPage}
         goToNextPage={goToNextPage}
+        getCoordinates={getCoordinates}
       />
     </div>
   );
