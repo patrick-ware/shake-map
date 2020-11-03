@@ -16,7 +16,7 @@ function App() {
   const [firstRecordDate, setFirstRecordDate] = useState("");
   const [lastRecordDate, setLastRecordDate] = useState("");
   const [page, setPage] = useState(1);
-  const [coordinates, setCoordinates] = useState([]);
+  const [coordinates, setCoordinates] = useState([0,0]);
 
   const isCurrent = useRef(false);
 
@@ -160,8 +160,9 @@ function App() {
         onEndChange={setEndDate}
       />
       <MapSection
+        coordinates={coordinates}
         location={location}
-        zoomLevel={17} 
+        zoomLevel={0} 
       />
       <BarChart 
         apiData={apiData}
@@ -170,7 +171,7 @@ function App() {
         firstRecordDate={firstRecordDate}
         goToPreviousPage={goToPreviousPage}
         goToNextPage={goToNextPage}
-        getCoordinates={getCoordinates}
+        setCoordinates={setCoordinates}
       />
     </div>
   );

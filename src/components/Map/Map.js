@@ -24,8 +24,8 @@ const Map = (props) => (
         defaultZoom={props.zoomLevel}
       >
         <LocationPin
-          lat={props.location.lat}
-          lng={props.location.lng}
+          lat={props.coordinates[1]}
+          lng={props.coordinates[0]}
           text={props.location.address}
         />
       </GoogleMapReact>
