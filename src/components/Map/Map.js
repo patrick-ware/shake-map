@@ -8,7 +8,7 @@ const MAP_API = process.env.MAP_API;
 
 const LocationPin = ({ text }) => (
   <div className="pin">
-    <Icon icon={mapMarkerAlt} className="pin-icon" style={{color:"#9c0505"}}/>
+    <Icon icon={mapMarkerAlt} className="pin-icon" style={{fontSize:"32pt"}}/>
     <p className="pin-text">{text}</p>
   </div>
 )
