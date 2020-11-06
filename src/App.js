@@ -164,7 +164,7 @@ function App() {
         page={page}
         coordinates={coordinates}
         location={location}
-        zoomLevel={0} 
+        zoomLevel={7} 
       />
       <BarChart 
         apiData={apiData}
