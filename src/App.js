@@ -160,6 +160,8 @@ function App() {
         onEndChange={setEndDate}
       />
       <MapSection
+        apiData={apiData}
+        page={page}
         coordinates={coordinates}
         location={location}
         zoomLevel={0} 

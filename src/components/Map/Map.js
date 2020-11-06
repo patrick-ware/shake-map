@@ -23,11 +23,16 @@ const Map = (props) => (
         defaultCenter={props.location}
         defaultZoom={props.zoomLevel}
       >
-        <LocationPin
-          lat={props.coordinates[1]}
-          lng={props.coordinates[0]}
-          text={props.location.address}
-        />
+        {
+          Object.entries(props.apiData).slice(props.page*20-20, props.page*20-1)
+            .map(([key, value]) => (
+              <LocationPin
+                lat={value.geometry.coordinates[1]}
+                lng={value.geometry.coordinates[0]}
+                text={props.location.address}
+              />
+          ))
+        }
       </GoogleMapReact>
     </div>
   </div>
