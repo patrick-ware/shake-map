@@ -29,7 +29,7 @@ const Map = (props) => (
               <LocationPin
                 lat={value.geometry.coordinates[1]}
                 lng={value.geometry.coordinates[0]}
-                text={props.location.address}
+                text={value.properties.place}
               />
           ))
         }
