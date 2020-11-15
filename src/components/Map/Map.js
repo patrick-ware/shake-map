@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useState, useEffect, useRef } from 'react';
 import useSwr from 'swr';
 import useSupercluster from 'use-supercluster';
 import GoogleMapReact from 'google-map-react'
@@ -13,28 +13,35 @@ const LocationPin = ({ text }) => (
   </div>
 )
 
-const Map = (props) => (
-  <div className="map">
-    <h2 className="map-h2" style={{color: "white"}}> TESTING</h2>
+function Map(props) {
 
-    <div className="google-map">
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
-        defaultCenter={props.location}
-        defaultZoom={props.zoomLevel}
-      >
-        {
-          Object.entries(props.apiData).slice(props.page*20-20, props.page*20-1)
-            .map(([key, value]) => (
-              <LocationPin
-                lat={value.geometry.coordinates[1]}
-                lng={value.geometry.coordinates[0]}
-                text={value.properties.place}
-              />
-          ))
-        }
-      </GoogleMapReact>
+  const mapRef = useRef();
+  const [zoom, setZoom] = useState(10);
+  const [bounds, setBounds] =useState(null);
+
+  return (
+    <div className="map">
+      <h2 className="map-h2" style={{color: "white"}}> TESTING</h2>
+
+      <div className="google-map">
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
+          defaultCenter={props.location}
+          defaultZoom={props.zoomLevel}
+        >
+          {
+            Object.entries(props.apiData).slice(props.page*20-20, props.page*20-1)
+              .map(([key, value]) => (
+                <LocationPin
+                  lat={value.geometry.coordinates[1]}
+                  lng={value.geometry.coordinates[0]}
+                  text={value.properties.place}
+                />
+            ))
+          }
+        </GoogleMapReact>
+      </div>
     </div>
-  </div>
-)
+  )
+}
 export default Map;
