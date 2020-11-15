@@ -1,4 +1,6 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
+import useSupercluster from 'use-supercluster';
+import useSwr from 'swr';
 import './App.css';
 // Import components
 import BarChart from './components/BarChart/BarChart.js';

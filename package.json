@@ -11,7 +11,10 @@
     "react": "^16.13.1",
     "react-date-picker": "^8.0.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "supercluster": "^7.1.0",
+    "swr": "^0.3.8",
+    "use-supercluster": "^0.2.9"
   },
   "engines": {
     "node": "14.2.x"

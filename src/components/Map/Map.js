@@ -1,10 +1,10 @@
 import React from 'react';
+import useSwr from 'swr';
+import useSupercluster from 'use-supercluster';
 import GoogleMapReact from 'google-map-react'
 import './Map.css';
 import { Icon, InlineIcon } from '@iconify/react';
 import mapMarkerAlt from '@iconify/icons-fa-solid/map-marker-alt';
-
-const MAP_API = process.env.MAP_API;
 
 const LocationPin = ({ text }) => (
   <div className="pin">
@@ -19,7 +19,7 @@ const Map = (props) => (
 
     <div className="google-map">
       <GoogleMapReact
-        bootstrapURLKeys={{ key: MAP_API }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
         defaultCenter={props.location}
         defaultZoom={props.zoomLevel}
       >
