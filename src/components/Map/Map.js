@@ -15,6 +15,8 @@ const LocationPin = ({ text }) => (
 
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 
+const Marker = ({children}) => children;
+
 function Map(props) {
   // 1) Map setup
   const mapRef = useRef();
@@ -22,8 +24,9 @@ function Map(props) {
   const [bounds, setBounds] = useState(null);
   
   // 2) load and format data
-  const url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=5&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444"
-  const {data, error} = useSwr(url, fetcher)
+//  const url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=5&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444"
+//  const {data, error} = useSwr(url, fetcher)
+//  const earthquakes = data && !error ? data.slice(0,200) :[];
 
   // 3) get clusters
 
@@ -40,7 +43,7 @@ function Map(props) {
           defaultZoom={6}
         >
           {
-            Object.entries(props.apiData).slice(props.page*20-20, props.page*20-1)
+            Object.entries(props.apiData).slice(0,200)
               .map(([key, value]) => (
                 <LocationPin
                   lat={value.geometry.coordinates[1]}
