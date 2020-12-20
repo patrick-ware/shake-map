@@ -45,7 +45,7 @@ function Map(props) {
           {
             Object.entries(props.apiData).slice(0,200)
               .map(([key, value]) => (
-                <LocationPin
+                <Marker className="pin"
                   key={value.geometry.id}
                   lat={value.geometry.coordinates[1]}
                   lng={value.geometry.coordinates[0]}
