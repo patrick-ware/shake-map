@@ -26,8 +26,8 @@ function Map(props) {
       <div className="google-map">
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
-          defaultCenter={props.location}
-          defaultZoom={props.zoomLevel}
+          defaultCenter={{ lat:38.1637, lng:-118.0837}}
+          defaultZoom={6}
         >
           {
             Object.entries(props.apiData).slice(props.page*20-20, props.page*20-1)
