@@ -4,7 +4,7 @@ import useSupercluster from 'use-supercluster';
 import GoogleMapReact from 'google-map-react'
 import './Map.css';
 import { Icon, InlineIcon } from '@iconify/react';
-import mapMarkerAlt from '@iconify/icons-fa-solid/map-marker-alt';
+import circleSlice8 from '@iconify-icons/mdi/circle-slice-8';
 
 //const LocationPin = ({ text }) => (
 //  <div className="pin">
@@ -51,7 +51,7 @@ function Map(props) {
                   lng={value.geometry.coordinates[0]}
                 >
                   <div className="pin">
-                    <Icon icon={mapMarkerAlt} className="pin-icon" style={{fontSize:"32pt"}}/>
+                    <Icon icon={circleSlice8} className="pin-icon" style={{fontSize:"32pt"}}/>
                     <p className="pin-text">{value.properties.place}</p>
                   </div>
                 </Marker>
