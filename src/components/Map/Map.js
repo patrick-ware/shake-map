@@ -6,12 +6,12 @@ import './Map.css';
 import { Icon, InlineIcon } from '@iconify/react';
 import mapMarkerAlt from '@iconify/icons-fa-solid/map-marker-alt';
 
-const LocationPin = ({ text }) => (
-  <div className="pin">
-    <Icon icon={mapMarkerAlt} className="pin-icon" style={{fontSize:"32pt"}}/>
-    <p className="pin-text">{text}</p>
-  </div>
-)
+//const LocationPin = ({ text }) => (
+//  <div className="pin">
+//    <Icon icon={mapMarkerAlt} className="pin-icon" style={{fontSize:"32pt"}}/>
+//    <p className="pin-text">{text}</p>
+//  </div>
+//)
 
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 
@@ -45,12 +45,16 @@ function Map(props) {
           {
             Object.entries(props.apiData).slice(0,200)
               .map(([key, value]) => (
-                <Marker className="pin"
+                <Marker
                   key={value.geometry.id}
                   lat={value.geometry.coordinates[1]}
                   lng={value.geometry.coordinates[0]}
-                  text={value.properties.place}
-                />
+                >
+                  <div className="pin">
+                    <Icon icon={mapMarkerAlt} className="pin-icon" style={{fontSize:"32pt"}}/>
+                    <p className="pin-text">{value.properties.place}</p>
+                  </div>
+                </Marker>
             ))
           }
         </GoogleMapReact>
