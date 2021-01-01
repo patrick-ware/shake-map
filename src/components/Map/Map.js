@@ -28,6 +28,8 @@ function Map(props) {
 //  const {data, error} = useSwr(url, fetcher)
 //  const earthquakes = data && !error ? data.slice(0,200) :[];
 
+  const points = props.apiData
+
   // 3) get clusters
 //  const { clusters } = useSupercluster({
 //    points,
