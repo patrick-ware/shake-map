@@ -32,11 +32,11 @@ function Map(props) {
     type: "Feature",
     properties: {
       cluster: false,
-      quakeID: null,
-      magnitude: null,
-      location: null,
+      quakeID: quake.id,
+      magnitude: quake.properties.mag,
+      location: quake.properties.place,
     },
-    geometry: { type: "Point", coordinates:[]
+    geometry: { type: "Point", coordinates:[quake.geometry.coordinates[0], quake.geometry.coordinates[1]]
     }
   }))
       
