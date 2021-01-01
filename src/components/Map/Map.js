@@ -29,6 +29,12 @@ function Map(props) {
 //  const earthquakes = data && !error ? data.slice(0,200) :[];
 
   // 3) get clusters
+//  const { clusters } = useSupercluster({
+//    points,
+//    bounds,
+//    zoom,
+//    options: {radius: 75, maxZoom: 20}
+//  })
 
   // 4) render map
 
