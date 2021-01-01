@@ -14,12 +14,12 @@
 .pin {
   display: flex;
   align-items: center;
-  width: 180px;
   color: var(--main-blue);
 }
 
 .pin-icon {
   font-size: 4rem;
+  color: #b00505;
 }
 
 .pin-text {
@@ -28,7 +28,7 @@
 
 .shake-marker {
   border-radius: 50%;
-  background-color: black;
+  background-color: red;
   border: 2px solid white;
 }
 
