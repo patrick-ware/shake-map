@@ -65,7 +65,7 @@ function Map(props) {
             Object.entries(props.apiData).slice(0,200)
               .map(([key, value]) => (
                 <Marker
-                  key={value.geometry.id}
+                  key={value.id}
                   lat={value.geometry.coordinates[1]}
                   lng={value.geometry.coordinates[0]}
                 >
