@@ -65,6 +65,10 @@ function Map(props) {
           bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
           defaultCenter={{ lat:38.1637, lng:-118.0837}}
           defaultZoom={6}
+          yesIWantToUseGoogleMapApiInternals
+          onGoogleApiLoaded={({ map }) => {
+            mapRef.current = map;
+        }}
         >
           {
             Object.entries(props.apiData).slice(0,200)
