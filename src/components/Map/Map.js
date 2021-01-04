@@ -53,7 +53,7 @@ function Map(props) {
     zoom,
     options: {radius: 75, maxZoom: 20}
   })
-
+  console.log("this is clusters", clusters)
   // 4) render map
 
   return (
@@ -102,19 +102,19 @@ function Map(props) {
         })  }
 
           {
-//            Object.entries(props.apiData).slice(0,200)
-//              .map(([key, value]) => (
-//                <Marker
-//                  key={value.id}
-//                  lat={value.geometry.coordinates[1]}
-//                  lng={value.geometry.coordinates[0]}
-//                >
-//                  <div className="pin">
-//                    <Icon icon={circleSlice8} className="pin-icon" style={{fontSize:"32pt"}}/>
-//                    <p className="pin-text">{value.properties.place}</p>
-//                  </div>
-//                </Marker>
-//            ))
+            Object.entries(props.apiData).slice(0,200)
+              .map(([key, value]) => (
+                <Marker
+                  key={value.id}
+                  lat={value.geometry.coordinates[1]}
+                  lng={value.geometry.coordinates[0]}
+                >
+                  <div className="pin">
+                    <Icon icon={circleSlice8} className="pin-icon" style={{fontSize:"32pt"}}/>
+                    <p className="pin-text">{value.properties.place}</p>
+                  </div>
+                </Marker>
+            ))
           }
         </GoogleMapReact>
       </div>
