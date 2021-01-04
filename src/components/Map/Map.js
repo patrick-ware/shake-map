@@ -68,7 +68,16 @@ function Map(props) {
           yesIWantToUseGoogleMapApiInternals
           onGoogleApiLoaded={({ map }) => {
             mapRef.current = map;
-        }}
+          }}
+          onChange={({zoom, bounds}) => {
+            setZoom(zoom);
+            setBounds([
+              bounds.nw.lng,
+              bounds.se.lat,
+              bounds.se.lnt,
+              bounds.nw.lat
+            ]);
+          }}
         >
           {
             Object.entries(props.apiData).slice(0,200)
