@@ -8,7 +8,7 @@ import circleSlice8 from '@iconify-icons/mdi/circle-slice-8';
 
 //const LocationPin = ({ text }) => (
 //  <div className="pin">
-//    <Icon icon={mapMarkerAlt} className="pin-icon" style={{fontSize:"32pt"}}/>
+//value    <Icon icon={mapMarkerAlt} className="pin-icon" style={{fontSize:"32pt"}}/>
 //    <p className="pin-text">{text}</p>
 //  </div>
 //)
@@ -34,7 +34,7 @@ function Map(props) {
       cluster: false,
       quakeID: quake.id,
       magnitude: quake.properties.mag,
-      location: quake.properties.place,
+      place: quake.properties.place,
     },
     geometry: { 
       type: "Point", 
@@ -79,20 +79,42 @@ function Map(props) {
             ]);
           }}
         >
+        {clusters.map(cluster => {
+          const [longitude, latitude] = cluster.geometry.coordinates;
+          const {
+            cluster: isCluster,
+            point_count: pointCount
+          } = cluster.properties;
+          
+          if (isCluster) {
+          }
+          return (
+            <Marker
+              key={cluster.proerties.quakeID}
+              lat={latitude}
+              lng={longitude}
+            >
+              <div className="pin">
+                <Icon icon={circleSlice8} className="pin-icon" style={{fontSize:"32pt"}}/>
+              </div>
+            </Marker>
+          )
+        })  }
+
           {
-            Object.entries(props.apiData).slice(0,200)
-              .map(([key, value]) => (
-                <Marker
-                  key={value.id}
-                  lat={value.geometry.coordinates[1]}
-                  lng={value.geometry.coordinates[0]}
-                >
-                  <div className="pin">
-                    <Icon icon={circleSlice8} className="pin-icon" style={{fontSize:"32pt"}}/>
-                    <p className="pin-text">{value.properties.place}</p>
-                  </div>
-                </Marker>
-            ))
+//            Object.entries(props.apiData).slice(0,200)
+//              .map(([key, value]) => (
+//                <Marker
+//                  key={value.id}
+//                  lat={value.geometry.coordinates[1]}
+//                  lng={value.geometry.coordinates[0]}
+//                >
+//                  <div className="pin">
+//                    <Icon icon={circleSlice8} className="pin-icon" style={{fontSize:"32pt"}}/>
+//                    <p className="pin-text">{value.properties.place}</p>
+//                  </div>
+//                </Marker>
+//            ))
           }
         </GoogleMapReact>
       </div>
