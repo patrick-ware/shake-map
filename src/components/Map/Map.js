@@ -26,8 +26,8 @@ function Map(props) {
   // 2) load and format data
   const url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=5&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444"
   const {data, error} = useSwr(url, fetcher)
-  console.log("HERE IS NEW DATA", data)
-  const earthquakes = data && !error ? data.features :[];
+  const earthquakes = data && !error ? data.features.slice(0,200) :[];
+  console.log("HERE IS NEW DATA", earthquakes)
 
   const points = earthquakes.map(quake => ({
     type: "Feature",
@@ -45,7 +45,7 @@ function Map(props) {
       ]
     }
   }))
-      
+  console.log("and here are the points", points)    
 
   // 3) get clusters
   const { clusters } = useSupercluster({
