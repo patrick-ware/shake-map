@@ -141,12 +141,6 @@ function App() {
 
   useEffect(doFetch, [minMag, maxMag, startDate, endDate])
 
-  const location = {
-    address: '1600 Amphitheatre Parkway, Mountain View, california.',
-    lat: 37.42216,
-    lng: -122.08427,
-  } // our location object from earlier
-
   return (
     <div>
       <div className="title"> Shake Shack </div>
@@ -165,7 +159,6 @@ function App() {
         apiData={apiData}
         page={page}
         coordinates={coordinates}
-        location={location}
         zoomLevel={7} 
       />
       <BarChart 
