@@ -144,7 +144,7 @@ function App() {
   return (
     <div>
       <div className="title"> Shake Shack </div>
-      <h2 className="subtitle"> Significant Earthquakes in North America in 2020</h2>    
+      <h2 className="subtitle"> Significant Earthquakes in North America</h2>    
       <DataModifier
         minMag={minMag}
         changeMinMag={minimumMagnitude}
