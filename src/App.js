@@ -1,156 +1,49 @@
-import React, { Component, useState, useEffect, useRef } from 'react';
-import useSwr from 'swr';
-import './App.css';
-import GoogleMapReact from 'google-map-react'
-import useSupercluster from 'use-supercluster';
-// Import components
-import BarChart from './components/BarChart/BarChart.js';
-import MagInput from './components/MagInput/MagInput.js';
-import DatePicker from 'react-date-picker';
-import DataModifier from './components/DataModifier/DataModifier.js';
-//import MapSection from './components/Map/Map.js' // import the map here
-import './components/Map/Map.css';
-import { Icon, InlineIcon } from '@iconify/react';
-import circleSlice8 from '@iconify-icons/mdi/circle-slice-8';
+import React, { useState, useRef } from "react";
+import useSwr from "swr";
+import GoogleMapReact from "google-map-react";
+import useSupercluster from "use-supercluster";
+import "./App.css";
 
-// Defining variables outside of App()?
+// Defining variables outside of App()
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 
 const Marker = ({ children }) => children;
 
 export default function App() {
-  const [apiData, setApiData] = useState([]);
-  const [minMag, setMinMag] = useState(5.0);
-  const [maxMag, setMaxMag] = useState(8.0);
-  const [startDate, setStartDate] = useState(new Date("January 1, 2020 00:00:00"));
-  const [endDate, setEndDate] = useState(new Date());
-  const [firstRecordDate, setFirstRecordDate] = useState("");
-  const [lastRecordDate, setLastRecordDate] = useState("");
-  const [page, setPage] = useState(1);
-  const [coordinates, setCoordinates] = useState([0,0]);
+  const mapRef = useRef();
+  const [bounds, setBounds] = useState(null);
+  const [zoom, setZoom] = useState(10);
 
-  const isCurrent = useRef(false);
-
-  // Get the coordinates of point
-  function getCoordinates() {
-    // setCoordinates(quake)
-  }
-
-  // Modify minimum magnitude
-  function minimumMagnitude(ev) {
-    let value = ev.target.value;
-    console.log('Minimum magnitude:', value);
-    if (value > maxMag) {
-      alert("Minimum value must be greater than or equal to maximum value")
-    } else {
-      setMinMag(value);
-      setPage(1);
+  const url =
+    "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10";
+  const { data, error } = useSwr(url, { fetcher });
+  const crimes = data && !error ? data.slice(0, 2000) : [];
+  const points = crimes.map(crime => ({
+    type: "Feature",
+    properties: { cluster: false, crimeId: crime.id, category: crime.category },
+    geometry: {
+      type: "Point",
+      coordinates: [
+        parseFloat(crime.location.longitude),
+        parseFloat(crime.location.latitude)
+      ]
     }
-  }
+  }));
 
-  // Modify maximum magnitude
-  function maximumMagnitude(ev) {
-    let value = ev.target.value;
-    console.log('Maximum magnitude:', value);
-    if (value < minMag) {
-      alert("Maximum value must be greater than or equal to minimum value")
-    } else {
-      setMaxMag(value);
-      setPage(1);
-    }
-  }
-
-  // Check date inputs
-  function checkDates(){
-    console.log('Start date is:', startDate)
-    console.log('End date is:', endDate)  
-  }
-
-
-  // Get dates of first and last records displaying on page
-  function getDisplayDates(){
-    //if (isCurrent.current) {
-    if (apiData.length >0) {
-      // Get date of first record displaying
-      let visibleRecords = apiData.slice(page*20-20, page*20-1)
-      let fullFirstStringDate = new Date(visibleRecords[0].properties.time).toUTCString()
-      setFirstRecordDate(fullFirstStringDate.slice(4,16))
-      console.log("first record on page is", firstRecordDate)
-
-      // Get date of last record displaying
-      let fullLastStringDate = new Date(visibleRecords[visibleRecords.length-1].properties.time).toUTCString()
-      setLastRecordDate(fullLastStringDate.slice(4,16))
-      console.log("last record on page is", lastRecordDate)
-    }
-  }
-
-  // Go to next page
-  function goToNextPage() {
-    const newPageValue = Math.min(page + 1, Math.ceil(apiData.length/20))
-    setPage(newPageValue)
-  }
-  // Go to previous page
-  function goToPreviousPage() {
-    const newPageValue = Math.max(page - 1, 1)
-    setPage(newPageValue)
-  }
-
-  // Format start date
-  function formatStartDate(){
-    let startMonth = startDate.getUTCMonth() + 1; //months from 1-12
-    let startDay = startDate.getUTCDate();
-    let startYear = startDate.getUTCFullYear();
-
-    let startTime = startYear + "-" + startMonth + "-" + startDay;
-    console.log("api start date is", startTime)
-    return startTime
-  }
-
-  // Format end date
-  function formatEndDate(){
-    let endMonth = endDate.getUTCMonth() + 1; //months from 1-12
-    let endDay = endDate.getUTCDate();
-    let endYear = endDate.getUTCFullYear();
-
-    let endTime = endYear + "-" + endMonth + "-" + endDay;
-    console.log("api end date is", endTime)
-    return endTime
-  }
-
-  // Fetch data from API
-  function doFetch(){
-  console.log("fetching data from API...");
-
-    const api = 
-      "https://earthquake.usgs.gov/fdsnws/event/1/"+
-      "query?format=geojson&starttime=2020-01-01&"+
-      "starttime="+ formatStartDate() +
-      "&endtime=" + formatEndDate() + 
-      "&minmagnitude=" + minMag + 
-      "&maxmagnitude=" + maxMag + 
-      "&minlatitude=24.396308"+
-      "&minlongitude=-124.848974"+
-      "&maxlatitude=49.384358"+
-      "&maxlongitude=-66.885444";
-    
-    console.log(api)
-    
-    fetch(api)
-      .then(response => response.json())
-      .then(data => {
-        console.log("this is data", data)
-          setApiData(data.features)
-          isCurrent.current = true;
-      });
-    }
+  const { clusters, supercluster } = useSupercluster({
+    points,
+    bounds,
+    zoom,
+    options: { radius: 75, maxZoom: 20 }
+  });
 
   // START MAP COMPONENT CODE
 
 
-    // 1) Map setup
-    const mapRef = useRef();
-    const [bounds, setBounds] = useState(null);
-    const [zoom, setZoom] = useState(10);
+//    // 1) Map setup
+//    const mapRef = useRef();
+//    const [bounds, setBounds] = useState(null);
+//    const [zoom, setZoom] = useState(10);
     
     // 2) load and format data
     /* ORIG EARTHQUAKE CODE
@@ -180,125 +73,79 @@ export default function App() {
       options: { radius: 75, maxZoom: 20 },
     }); */
 
-  const url =
-    "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10";
-  const { data, error } = useSwr(url, { fetcher });
-  const crimes = data && !error ? data.slice(0, 2000) : [];
-  const points = crimes.map(crime => ({
-    type: "Feature",
-    properties: { cluster: false, crimeId: crime.id, category: crime.category },
-    geometry: {
-      type: "Point",
-      coordinates: [
-        parseFloat(crime.location.longitude),
-        parseFloat(crime.location.latitude)
-      ]
-    }
-  }));
-  console.log("and here are the points", points)
-
-  const { clusters, supercluster } = useSupercluster({
-    points,
-    bounds,
-    zoom,
-    options: { radius: 75, maxZoom: 20 }
-  });
-
   console.log("this is clusters", clusters);
     // 4) render map
  
     // END MAP COMPONENT CODE
 
-  useEffect(() => {
-    getDisplayDates();
-  }, [apiData, page]);
+ return (
+    <div style={{ height: "100vh", width: "100%" }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
+        defaultCenter={{ lat: 52.6376, lng: -1.135171 }}
+        defaultZoom={10}
+        yesIWantToUseGoogleMapApiInternals
+        onGoogleApiLoaded={({ map }) => {
+          mapRef.current = map;
+        }}
+        onChange={({ zoom, bounds }) => {
+          setZoom(zoom);
+          setBounds([
+            bounds.nw.lng,
+            bounds.se.lat,
+            bounds.se.lng,
+            bounds.nw.lat
+          ]);
+        }}
+      >
+        {clusters.map(cluster => {
+          const [longitude, latitude] = cluster.geometry.coordinates;
+          const {
+            cluster: isCluster,
+            point_count: pointCount
+          } = cluster.properties;
 
-  useEffect(doFetch, [minMag, maxMag, startDate, endDate])
-
-  return (
-    <div>
-      <div className="title"> Shake Shack </div>
-      <h2 className="subtitle"> Significant Earthquakes in North America in 2020</h2>    
-      <DataModifier
-        minMag={minMag}
-        changeMinMag={minimumMagnitude}
-        maxMag={maxMag}
-        changeMaxMag={maximumMagnitude}
-        startDate={startDate}
-        onStartChange={setStartDate}
-        endDate={endDate}
-        onEndChange={setEndDate}
-      />
-      <div className="map">
-        <h2 className="map-h2" style={{color: "white"}}> TESTING</h2>
-        <div className="google-map">
-          <GoogleMapReact
-            bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
-            defaultCenter={{ lat:38.1637, lng:-118.0837}}
-            defaultZoom={6}
-            yesIWantToUseGoogleMapApiInternals
-            onGoogleApiLoaded={({ map }) => {
-              mapRef.current = map;
-            }}
-            onChange={({zoom, bounds}) => {
-              setZoom(zoom);
-              setBounds([
-                bounds.nw.lng,
-                bounds.se.lat,
-                bounds.se.lnt,
-                bounds.nw.lat
-              ]);
-            }}
-          >
-          {clusters.map(cluster => {
-            const [longitude, latitude] = cluster.geometry.coordinates;
-            const {
-              cluster: isCluster,
-              point_count: pointCount
-            } = cluster.properties;
-            
-            if (isCluster) {
-            }
+          if (isCluster) {
             return (
               <Marker
-                key={cluster.proerties.quakeID}
+                key={`cluster-${cluster.id}`}
                 lat={latitude}
                 lng={longitude}
               >
-                <div className="pin">
-                  <Icon icon={circleSlice8} className="pin-icon" style={{fontSize:"32pt"}}/>
+                <div
+                  className="cluster-marker"
+                  style={{
+                    width: `${10 + (pointCount / points.length) * 20}px`,
+                    height: `${10 + (pointCount / points.length) * 20}px`
+                  }}
+                  onClick={() => {
+                    const expansionZoom = Math.min(
+                      supercluster.getClusterExpansionZoom(cluster.id),
+                      20
+                    );
+                    mapRef.current.setZoom(expansionZoom);
+                    mapRef.current.panTo({ lat: latitude, lng: longitude });
+                  }}
+                >
+                  {pointCount}
                 </div>
               </Marker>
-            )
-          })  }
+            );
+          }
 
-            {/*{
-              Object.entries(apiData).slice(0,200)
-                .map(([key, value]) => (
-                  <Marker
-                    key={value.id}
-                    lat={value.geometry.coordinates[1]}
-                    lng={value.geometry.coordinates[0]}
-                  >
-                    <div className="pin">
-                      <Icon icon={circleSlice8} className="pin-icon" style={{fontSize:"32pt"}}/>
-                      <p className="pin-text">{value.properties.place}</p>
-                    </div>
-                  </Marker>
-              ))
-            }*/}
-          </GoogleMapReact>
-        </div>
-      </div>
-      {/*<BarChart 
-        apiData={apiData}
-        page={page}
-        lastRecordDate={lastRecordDate}
-        firstRecordDate={firstRecordDate}
-        goToPreviousPage={goToPreviousPage}
-        goToNextPage={goToNextPage}
-        setCoordinates={setCoordinates}
-      />*/}
+          return (
+            <Marker
+              key={`crime-${cluster.properties.crimeId}`}
+              lat={latitude}
+              lng={longitude}
+            >
+              <button className="crime-marker">
+                <img src="/custody.svg" alt="crime doesn't pay" />
+              </button>
+            </Marker>
+          );
+        })}
+      </GoogleMapReact>
     </div>
   );
 }
