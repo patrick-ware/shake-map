@@ -206,12 +206,6 @@ function App() {
         endDate={endDate}
         onEndChange={setEndDate}
       />
-      {/*<MapSection
-        apiData={apiData}
-        page={page}
-        coordinates={coordinates}
-        zoomLevel={7} 
-      />*/}
     <div className="map">
       <h2 className="map-h2" style={{color: "white"}}> TESTING</h2>
 
