@@ -144,18 +144,27 @@ export default function App() {
               lat={latitude}
               lng={longitude}
             >
-              <div
+                <div
                   className=""
                   style={{
-                    color:"black",
-                    backgroundColor:"red",
+                    color:"red",
+                    backgroundColor:"black",
                     padding:"5px",
                     borderRadius:"50%",
                     width: `${10 + (pointCount / points.length) * 20}px`,
                     height: `${10 + (pointCount / points.length) * 20}px`
                   }}
-              />
-              {cluster.properties.magnitude}
+                  onClick={() => {
+                    const expansionZoom = Math.min(
+                      supercluster.getClusterExpansionZoom(cluster.id),
+                      20
+                    );
+                    mapRef.current.setZoom(expansionZoom);
+                    mapRef.current.panTo({ lat: latitude, lng: longitude });
+                  }}
+                >
+                </div>
+                  {cluster.properties.magnitude}
             </Marker>
           );
         })}
