@@ -114,8 +114,12 @@ export default function App() {
                 lng={longitude}
               >
                 <div
-                  className="cluster-marker"
+                  className=""
                   style={{
+                    color:"red",
+                    backgroundColor:"black",
+                    padding:"5px",
+                    borderRadius:"50%",
                     width: `${10 + (pointCount / points.length) * 20}px`,
                     height: `${10 + (pointCount / points.length) * 20}px`
                   }}
