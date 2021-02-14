@@ -21,7 +21,13 @@ export default function App() {
   console.log("HERE IS NEW DATA", earthquakes)
   const points = earthquakes.map(earthquake => ({
     type: "Feature",
-    properties: { cluster: false, earthquakeId: earthquake.id, magnitude: earthquake.properties.mag, place: earthquake.properties.place },
+    properties: { 
+      cluster: false, 
+      earthquakeId: earthquake.id, 
+      magnitude: earthquake.properties.mag, 
+      place: earthquake.properties.place,
+      time: earthquake.properties.time 
+    },
     geometry: {
       type: "Point",
       coordinates: [
@@ -157,8 +163,13 @@ export default function App() {
                   onClick={() => {
                   }}
                 >
+                  <div className="tooltiptext">
+                    <p>{cluster.properties.magnitude}</p>
+                    <p>{cluster.properties.place}</p>
+                    <p>{new Date(cluster.properties.time).toUTCString()}</p>
+                  </div>
                 </div>
-                  {cluster.properties.magnitude}
+                  {cluster.properties.magnitude.toFixed(1)}
             </Marker>
           );
         })}
