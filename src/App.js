@@ -16,9 +16,9 @@ import circleSlice8 from '@iconify-icons/mdi/circle-slice-8';
 // Defining variables outside of App()?
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 
-const Marker = ({children}) => children;
+const Marker = ({ children }) => children;
 
-function App() {
+export default function App() {
   const [apiData, setApiData] = useState([]);
   const [minMag, setMinMag] = useState(5.0);
   const [maxMag, setMaxMag] = useState(8.0);
@@ -149,8 +149,8 @@ function App() {
 
     // 1) Map setup
     const mapRef = useRef();
-    const [zoom, setZoom] = useState(10);
     const [bounds, setBounds] = useState(null);
+    const [zoom, setZoom] = useState(10);
     
     // 2) load and format data
     /* ORIG EARTHQUAKE CODE
@@ -180,31 +180,31 @@ function App() {
       options: { radius: 75, maxZoom: 20 },
     }); */
 
-      const url =
+  const url =
     "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10";
-      const { data, error } = useSwr(url, { fetcher });
-      const crimes = data && !error ? data.slice(0, 2000) : [];
-      const points = crimes.map(crime => ({
-        type: "Feature",
-        properties: { cluster: false, crimeId: crime.id, category: crime.category },
-        geometry: {
-          type: "Point",
-          coordinates: [
-            parseFloat(crime.location.longitude),
-            parseFloat(crime.location.latitude)
-          ]
-        }
-      }));
-      console.log("and here are the points", points)
+  const { data, error } = useSwr(url, { fetcher });
+  const crimes = data && !error ? data.slice(0, 2000) : [];
+  const points = crimes.map(crime => ({
+    type: "Feature",
+    properties: { cluster: false, crimeId: crime.id, category: crime.category },
+    geometry: {
+      type: "Point",
+      coordinates: [
+        parseFloat(crime.location.longitude),
+        parseFloat(crime.location.latitude)
+      ]
+    }
+  }));
+  console.log("and here are the points", points)
 
-      const { clusters, supercluster } = useSupercluster({
-        points,
-        bounds,
-        zoom,
-        options: { radius: 75, maxZoom: 20 }
-      });
+  const { clusters, supercluster } = useSupercluster({
+    points,
+    bounds,
+    zoom,
+    options: { radius: 75, maxZoom: 20 }
+  });
 
-    console.log("this is clusters", clusters);
+  console.log("this is clusters", clusters);
     // 4) render map
  
     // END MAP COMPONENT CODE
@@ -302,5 +302,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
