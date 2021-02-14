@@ -1,8 +1,8 @@
 import React, { Component, useState, useEffect, useRef } from 'react';
-import useSupercluster from 'use-supercluster';
 import useSwr from 'swr';
 import './App.css';
 import GoogleMapReact from 'google-map-react'
+import useSupercluster from 'use-supercluster';
 // Import components
 import BarChart from './components/BarChart/BarChart.js';
 import MagInput from './components/MagInput/MagInput.js';
@@ -12,6 +12,11 @@ import DataModifier from './components/DataModifier/DataModifier.js';
 import './components/Map/Map.css';
 import { Icon, InlineIcon } from '@iconify/react';
 import circleSlice8 from '@iconify-icons/mdi/circle-slice-8';
+
+// Defining variables outside of App()?
+const fetcher = (...args) => fetch(...args).then(response => response.json());
+
+const Marker = ({children}) => children;
 
 function App() {
   const [apiData, setApiData] = useState([]);
@@ -141,9 +146,6 @@ function App() {
 
   // START MAP COMPONENT CODE
 
-  const fetcher = (...args) => fetch(...args).then(response => response.json());
-
-  const Marker = ({children}) => children;
 
     // 1) Map setup
     const mapRef = useRef();
@@ -151,7 +153,8 @@ function App() {
     const [bounds, setBounds] = useState(null);
     
     // 2) load and format data
-    const url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=4&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444"
+    /* ORIG EARTHQUAKE CODE
+    const url = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=3&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444"
     const {data, error} = useSwr(url, fetcher)
     const earthquakes = data && !error ? data.features :[];
     console.log("HERE IS NEW DATA", earthquakes)
@@ -167,17 +170,41 @@ function App() {
       "geometry": { type: "Point", coordinates:[quake.geometry.coordinates[0], quake.geometry.coordinates[1]]
       }
     }))
-    console.log("and here are the points", points)    
+    console.log("and here are the points", points)
 
     // 3) get clusters
     const { clusters, supercluster } = useSupercluster({
       points,
       bounds,
       zoom,
-      options: { radius: 75, maxZoom: 20 }
-    });
+      options: { radius: 75, maxZoom: 20 },
+    }); */
 
-    console.log("this is clusters", supercluster);
+      const url =
+    "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10";
+      const { data, error } = useSwr(url, { fetcher });
+      const crimes = data && !error ? data.slice(0, 2000) : [];
+      const points = crimes.map(crime => ({
+        type: "Feature",
+        properties: { cluster: false, crimeId: crime.id, category: crime.category },
+        geometry: {
+          type: "Point",
+          coordinates: [
+            parseFloat(crime.location.longitude),
+            parseFloat(crime.location.latitude)
+          ]
+        }
+      }));
+      console.log("and here are the points", points)
+
+      const { clusters, supercluster } = useSupercluster({
+        points,
+        bounds,
+        zoom,
+        options: { radius: 75, maxZoom: 20 }
+      });
+
+    console.log("this is clusters", clusters);
     // 4) render map
  
     // END MAP COMPONENT CODE
