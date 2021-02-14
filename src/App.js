@@ -144,9 +144,17 @@ export default function App() {
               lat={latitude}
               lng={longitude}
             >
-              <button>
-                Shake
-              </button>
+              <div
+                  className=""
+                  style={{
+                    color:"red",
+                    backgroundColor:"black",
+                    padding:"5px",
+                    borderRadius:"50%",
+                    width: `${10 + (pointCount / points.length) * 20}px`,
+                    height: `${10 + (pointCount / points.length) * 20}px`
+                  }}
+              />
             </Marker>
           );
         })}
