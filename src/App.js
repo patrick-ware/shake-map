@@ -4,6 +4,7 @@ import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
 import "./App.css";
 import Popover from "react-bootstrap/Popover";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 // Defining variables outside of App()
 const fetcher = (...args) => fetch(...args).then(response => response.json());
@@ -109,6 +110,20 @@ export default function App() {
               lat={latitude}
               lng={longitude}
             >
+            <OverlayTrigger
+              trigger="click"
+              placement="top"
+              overlay={
+                <Popover id="popover-basic">
+                  <Popover.Title as="h3">{`earthquake ${cluster.properties.earthquakeId}`}</Popover.Title>
+                  <Popover.Content>
+                    <p>{cluster.properties.magnitude}</p>
+                    <p>{cluster.properties.place}</p>
+                    <p>{new Date(cluster.properties.time).toUTCString()}</p>
+                  </Popover.Content>
+                </Popover>
+              }
+            >
                 <div
                   className=""
                   style={{
@@ -122,12 +137,8 @@ export default function App() {
                   onClick={() => {
                   }}
                 >
-                  <div className="tooltiptext">
-                    <p>{cluster.properties.magnitude}</p>
-                    <p>{cluster.properties.place}</p>
-                    <p>{new Date(cluster.properties.time).toUTCString()}</p>
-                  </div>
                 </div>
+                </OverlayTrigger>
                   {cluster.properties.magnitude.toFixed(1)}
             </Marker>
           );
