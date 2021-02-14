@@ -140,21 +140,22 @@ export default function App() {
 
           return (
             <Marker
-              key={`crime-${cluster.properties.crimeId}`}
+              key={`earthquake-${cluster.properties.earthquakeId}`}
               lat={latitude}
               lng={longitude}
             >
               <div
                   className=""
                   style={{
-                    color:"red",
-                    backgroundColor:"black",
+                    color:"black",
+                    backgroundColor:"red",
                     padding:"5px",
                     borderRadius:"50%",
                     width: `${10 + (pointCount / points.length) * 20}px`,
                     height: `${10 + (pointCount / points.length) * 20}px`
                   }}
               />
+              {cluster.properties.magnitude}
             </Marker>
           );
         })}
