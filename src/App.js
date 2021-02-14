@@ -15,17 +15,18 @@ export default function App() {
   const [zoom, setZoom] = useState(10);
 
   const url =
-    "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2019-10";
+    "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=3&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444";
   const { data, error } = useSwr(url, { fetcher });
-  const crimes = data && !error ? data.slice(0, 2000) : [];
-  const points = crimes.map(crime => ({
+  const earthquakes = data && !error ? data.features :[];
+  console.log("HERE IS NEW DATA", earthquakes)
+  const points = earthquakes.map(earthquake => ({
     type: "Feature",
-    properties: { cluster: false, crimeId: crime.id, category: crime.category },
+    properties: { cluster: false, earthquakeId: earthquake.id, magnitude: earthquake.properties.mag, place: earthquake.properties.place },
     geometry: {
       type: "Point",
       coordinates: [
-        parseFloat(crime.location.longitude),
-        parseFloat(crime.location.latitude)
+        earthquake.geometry.coordinates[0],
+        earthquake.geometry.coordinates[1]
       ]
     }
   }));
@@ -82,8 +83,8 @@ export default function App() {
     <div style={{ height: "100vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
-        defaultCenter={{ lat: 52.6376, lng: -1.135171 }}
-        defaultZoom={10}
+        defaultCenter={{ lat:38.1637, lng:-118.0837}}
+        defaultZoom={6}
         yesIWantToUseGoogleMapApiInternals
         onGoogleApiLoaded={({ map }) => {
           mapRef.current = map;
@@ -139,8 +140,8 @@ export default function App() {
               lat={latitude}
               lng={longitude}
             >
-              <button className="crime-marker">
-                <img src="/custody.svg" alt="crime doesn't pay" />
+              <button>
+                Shake
               </button>
             </Marker>
           );
