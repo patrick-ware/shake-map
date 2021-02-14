@@ -3,10 +3,10 @@ import useSwr from "swr";
 import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
 import "./App.css";
+import Popover from "react-bootstrap/Popover";
 
 // Defining variables outside of App()
 const fetcher = (...args) => fetch(...args).then(response => response.json());
-
 const Marker = ({ children }) => children;
 
 export default function App() {

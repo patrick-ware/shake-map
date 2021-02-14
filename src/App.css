@@ -178,7 +178,3 @@ html, body, #root, .App {
   border-style: solid;
   border-color: black transparent transparent transparent;
 }
-
-.tooltiptext {
-  visibility: visible;
-}
