@@ -127,7 +127,7 @@ export default function App() {
                   <div
                     className=""
                     style={{
-                      color:"#d1d1d1",
+                      color:"#F2A365",
                       backgroundColor:"#222831",
                       padding:"5px",
                       borderRadius:"50%",
@@ -143,14 +143,7 @@ export default function App() {
                       mapRef.current.panTo({ lat: latitude, lng: longitude });
                     }}
                   >
-                    <div style={{
-                          margin:"auto",
-                          textAlign:"center",
-                          fontSize:"12pt"
-                        }}
-                     >
-                    {pointCount}
-                    </div>
+                    <div className="cluster-point">{pointCount}</div>
                   </div>
                 </Marker>
               );
@@ -170,19 +163,13 @@ export default function App() {
                     backgroundColor:`rgb(255,${255-(25.5 * (cluster.properties.magnitude))},0)`,
                     padding:"5px",
                     borderRadius:"50%",
-                    border:"1px solid black",
+                    border:"1px solid #222831",
                     width:"11px",
                     height:"11px"
                   }}
                 >
-                  <div style={{
-                        margin:"auto",
-                        textAlign:"center",
-                        fontSize:"7pt"
-                      }}
-                   >
-                    {cluster.properties.magnitude.toFixed(1)}</div>
-                   </div>
+                 <div className="point">{cluster.properties.magnitude.toFixed(1)}</div>
+                </div>
                 </Marker>
               );
           })}
