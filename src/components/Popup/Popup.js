@@ -3,7 +3,10 @@ import './Popup.css';
 
 function Popup(props) {
   return (
-    <div className="Popup">
+    <div className="popup">
+      <p>{props.mag}</p>
+      <p>{props.place}</p>
+      <p>{props.time}</p>
     </div>
   )
 }
