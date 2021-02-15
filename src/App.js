@@ -20,7 +20,6 @@ export default function App() {
     "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=3&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444";
   const { data, error } = useSwr(url, { fetcher });
   const earthquakes = data && !error ? data.features :[];
-  console.log("HERE IS NEW DATA", earthquakes)
   const points = earthquakes.map(earthquake => ({
     type: "Feature",
     properties: { 
@@ -49,7 +48,7 @@ export default function App() {
  return (
     <div style={{ height: "100vh", width: "100%" }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_KEY }}
+        bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
         defaultCenter={{ lat:38.1637, lng:-118.0837}}
         defaultZoom={6}
         yesIWantToUseGoogleMapApiInternals
