@@ -128,7 +128,7 @@ export default function App() {
                     className=""
                     style={{
                       color:"#d1d1d1",
-                      backgroundColor:"#2A2A2A",
+                      backgroundColor:"#222831",
                       padding:"5px",
                       borderRadius:"50%",
                       width: `${20 + (pointCount / points.length) * 10}px`,
@@ -166,8 +166,8 @@ export default function App() {
                 <div
                   className=""
                   style={{
-                    color:"white",
-                    backgroundColor:`rgb(${50+(25.5 * (cluster.properties.magnitude))},0,0)`,
+                    color:"black",
+                    backgroundColor:`rgb(255,${255-(25.5 * (cluster.properties.magnitude))},0)`,
                     padding:"5px",
                     borderRadius:"50%",
                     border:"1px solid black",
