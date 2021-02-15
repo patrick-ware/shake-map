@@ -21,7 +21,7 @@ export default function App() {
   //State for API fetch
   const [minMag, setMinMag] = useState(5.0);
   const [maxMag, setMaxMag] = useState(8.0);
-  const [startDate, setStartDate] = useState(new Date("January 1, 2020 00:00:00"));
+  const [startDate, setStartDate] = useState(new Date("January 1, 2021 00:00:00"));
   const [endDate, setEndDate] = useState(new Date());
 
   // Modify minimum magnitude
@@ -45,9 +45,42 @@ export default function App() {
       setMaxMag(value);
     }
   }
+
+  // Format start date
+  function formatStartDate(){
+    let startMonth = startDate.getUTCMonth() + 1; //months from 1-12
+    let startDay = startDate.getUTCDate();
+    let startYear = startDate.getUTCFullYear();
+
+    let startTime = startYear + "-" + startMonth + "-" + startDay;
+    console.log("api start date is", startTime)
+    return startTime
+  }
+
+  // Format end date
+  function formatEndDate(){
+    let endMonth = endDate.getUTCMonth() + 1; //months from 1-12
+    let endDay = endDate.getUTCDate();
+    let endYear = endDate.getUTCFullYear();
+
+    let endTime = endYear + "-" + endMonth + "-" + endDay;
+    console.log("api end date is", endTime)
+    return endTime
+  }
+
   //  MAP CODE
   const url =
-    "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=3&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444";
+      "https://earthquake.usgs.gov/fdsnws/event/1/"+
+      "query?format=geojson&starttime=2020-01-01&"+
+      "starttime="+ formatStartDate() +
+      "&endtime=" + formatEndDate() + 
+      "&minmagnitude=" + minMag + 
+      "&maxmagnitude=" + maxMag + 
+      "&minlatitude=24.396308"+
+      "&minlongitude=-124.848974"+
+      "&maxlatitude=49.384358"+
+      "&maxlongitude=-66.885444";
+
   const { data, error } = useSwr(url, { fetcher });
   const earthquakes = data && !error ? data.features :[];
   const points = earthquakes.map(earthquake => ({
@@ -91,7 +124,7 @@ export default function App() {
         endDate={endDate}
         onEndChange={setEndDate}
       />
-      <div style={{ height: "100vh", width: "100%" }}>
+      <div style={{ height: "80vh", width: "100%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
           defaultCenter={{ lat:38.1637, lng:-118.0837}}
