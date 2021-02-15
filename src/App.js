@@ -3,8 +3,9 @@ import useSwr from "swr";
 import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
 import "./App.css";
-import Popover from "react-bootstrap/Popover";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+// Icon imports
+import { Icon, InlineIcon } from '@iconify/react';
+import circleSlice8 from '@iconify-icons/mdi/circle-slice-8';
 
 // Defining variables outside of App()
 const fetcher = (...args) => fetch(...args).then(response => response.json());
@@ -14,6 +15,9 @@ export default function App() {
   const mapRef = useRef();
   const [bounds, setBounds] = useState(null);
   const [zoom, setZoom] = useState(10);
+  // For Bootstrap tooltip
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
 
   const url =
     "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=3&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444";
@@ -110,36 +114,13 @@ export default function App() {
               lat={latitude}
               lng={longitude}
             >
-            <OverlayTrigger
-              trigger="click"
-              placement="top"
-              overlay={
-                <Popover id="popover-basic">
-                  <Popover.Title as="h3">{`earthquake ${cluster.properties.earthquakeId}`}</Popover.Title>
-                  <Popover.Content>
-                    <p>{cluster.properties.magnitude}</p>
-                    <p>{cluster.properties.place}</p>
-                    <p>{new Date(cluster.properties.time).toUTCString()}</p>
-                  </Popover.Content>
-                </Popover>
-              }
-            >
-                <div
-                  className=""
-                  style={{
-                    color:"red",
-                    backgroundColor:"black",
-                    padding:"5px",
-                    borderRadius:"50%",
-                    width: `${10 + (pointCount / points.length) * 20}px`,
-                    height: `${10 + (pointCount / points.length) * 20}px`
-                  }}
-                  onClick={() => {
-                  }}
-                >
-                </div>
-                </OverlayTrigger>
-                  {cluster.properties.magnitude.toFixed(1)}
+              <Icon icon={circleSlice8} 
+                className="pin-icon"
+                style={{
+                  color:`rgb(${25.5 * (cluster.properties.magnitude*1.4)},0,0)`
+                }}
+            />
+              {cluster.properties.magnitude.toFixed(1)}
             </Marker>
           );
         })}

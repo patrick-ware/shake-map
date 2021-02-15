@@ -150,3 +150,7 @@ html, body, #root, .App {
   color: white;
   justify-content: center;
 }
+
+.pin-icon {
+  font-size:18pt;
+}
