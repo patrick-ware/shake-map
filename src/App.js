@@ -15,9 +15,6 @@ export default function App() {
   const mapRef = useRef();
   const [bounds, setBounds] = useState(null);
   const [zoom, setZoom] = useState(10);
-  // For Bootstrap tooltip
-  const [show, setShow] = useState(false);
-  const target = useRef(null);
 
   const url =
     "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=3&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444";
@@ -117,7 +114,7 @@ export default function App() {
               <Icon icon={circleSlice8} 
                 className="pin-icon"
                 style={{
-                  color:`rgb(${25.5 * (cluster.properties.magnitude*1.4)},0,0)`
+                  color:`rgb(${50+(25.5 * (cluster.properties.magnitude))},0,0)`
                 }}
             />
               {cluster.properties.magnitude.toFixed(1)}
