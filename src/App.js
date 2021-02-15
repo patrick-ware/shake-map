@@ -83,12 +83,13 @@ export default function App() {
                 <div
                   className=""
                   style={{
-                    color:"red",
-                    backgroundColor:"black",
+                    color:"white",
+                    backgroundColor:"#2A2A2A",
                     padding:"5px",
                     borderRadius:"50%",
-                    width: `${10 + (pointCount / points.length) * 20}px`,
-                    height: `${10 + (pointCount / points.length) * 20}px`
+                    border:"2px solid black",
+                    width: `${20 + (pointCount / points.length) * 10}px`,
+                    height: `${20 + (pointCount / points.length) * 10}px`
                   }}
                   onClick={() => {
                     const expansionZoom = Math.min(
@@ -99,7 +100,14 @@ export default function App() {
                     mapRef.current.panTo({ lat: latitude, lng: longitude });
                   }}
                 >
+                  <div style={{
+                        margin:"auto",
+                        textAlign:"center",
+                        fontSize:"14pt"
+                      }}
+                   >
                   {pointCount}
+                  </div>
                 </div>
               </Marker>
             );
