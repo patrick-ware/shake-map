@@ -83,11 +83,10 @@ export default function App() {
                 <div
                   className=""
                   style={{
-                    color:"white",
+                    color:"#d1d1d1",
                     backgroundColor:"#2A2A2A",
                     padding:"5px",
                     borderRadius:"50%",
-                    border:"2px solid black",
                     width: `${20 + (pointCount / points.length) * 10}px`,
                     height: `${20 + (pointCount / points.length) * 10}px`
                   }}
@@ -103,7 +102,7 @@ export default function App() {
                   <div style={{
                         margin:"auto",
                         textAlign:"center",
-                        fontSize:"14pt"
+                        fontSize:"12pt"
                       }}
                    >
                   {pointCount}
@@ -119,13 +118,26 @@ export default function App() {
               lat={latitude}
               lng={longitude}
             >
-              <Icon icon={circleSlice8} 
-                className="pin-icon"
-                style={{
-                  color:`rgb(${50+(25.5 * (cluster.properties.magnitude))},0,0)`
-                }}
-            />
-              {cluster.properties.magnitude.toFixed(1)}
+                <div
+                  className=""
+                  style={{
+                    color:"white",
+                    backgroundColor:`rgb(${50+(25.5 * (cluster.properties.magnitude))},0,0)`,
+                    padding:"5px",
+                    borderRadius:"50%",
+                    border:"1px solid black",
+                    width:"11px",
+                    height:"11px"
+                  }}
+                >
+                  <div style={{
+                        margin:"auto",
+                        textAlign:"center",
+                        fontSize:"7pt"
+                      }}
+                   >
+              {cluster.properties.magnitude.toFixed(1)}</div>
+              </div>
             </Marker>
           );
         })}
