@@ -1,8 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { Component, useState, useRef } from "react";
 import useSwr from "swr";
 import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
 import "./App.css";
+import Popup from './components/Popup/Popup.js';
 // Icon imports
 import { Icon, InlineIcon } from '@iconify/react';
 import circleSlice8 from '@iconify-icons/mdi/circle-slice-8';
@@ -15,6 +16,7 @@ export default function App() {
   const mapRef = useRef();
   const [bounds, setBounds] = useState(null);
   const [zoom, setZoom] = useState(10);
+  const [popupInfo, setPopupInfo] = useState(null);
 
   const url =
     "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&starttime=2020-01-01&endtime=2020-05-07&minmagnitude=3&minlatitude=24.396308&minlongitude=-124.848974&maxlatitude=49.384358&maxlongitude=-66.885444";
@@ -116,6 +118,7 @@ export default function App() {
               key={`earthquake-${cluster.properties.earthquakeId}`}
               lat={latitude}
               lng={longitude}
+              onClick={() => setPopupInfo(cluster)}
             >
                 <div
                   className=""
@@ -141,6 +144,7 @@ export default function App() {
           );
         })}
       </GoogleMapReact>
+      {popupInfo && (<Popup store={popupInfo} style={{ position: 'absolute', top: 0, left: 0, width: '200px' }} />)}
     </div>
   );
 }
