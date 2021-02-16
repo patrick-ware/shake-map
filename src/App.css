@@ -170,6 +170,13 @@ html, body, #root, .App {
 }
 
 .title-block {
-  display: inline-flex;
-  align-items: flex-end;
+  display: flex;
+}
+
+.map-container {
+  display: flex;
+}
+
+.sidebar {
+  width:20%;
 }

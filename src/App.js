@@ -118,17 +118,8 @@ export default function App() {
         <h1 className="title"> Shake Shack </h1>
         <h1 className="subtitle"> Significant Earthquakes in North America</h1>
       </div>
-      <DataModifier
-        minMag={minMag}
-        changeMinMag={minimumMagnitude}
-        maxMag={maxMag}
-        changeMaxMag={maximumMagnitude}
-        startDate={startDate}
-        onStartChange={setStartDate}
-        endDate={endDate}
-        onEndChange={setEndDate}
-      />
-      <div style={{ height: "80vh", width: "100%" }}>
+      <div className="map-container">
+      <div style={{ height: "100vh", width: "80%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
           defaultCenter={{ lat:38.1637, lng:-118.0837}}
@@ -211,6 +202,19 @@ export default function App() {
               );
           })}
         </GoogleMapReact>
+      </div>
+      <div className="sidebar">
+        <DataModifier
+          minMag={minMag}
+          changeMinMag={minimumMagnitude}
+          maxMag={maxMag}
+          changeMaxMag={maximumMagnitude}
+          startDate={startDate}
+          onStartChange={setStartDate}
+          endDate={endDate}
+          onEndChange={setEndDate}
+        />
+        </div>
       </div>
     </div>
   );
