@@ -116,7 +116,7 @@ export default function App() {
     <div>
       <div className="title-block">
         <h1 className="title"> Shake Shack </h1>
-        <h1 className="subtitle"> Significant Earthquakes in North America</h1>
+        <h1 className="subtitle"> Mapping Earthquakes in North America using USGS</h1>
       </div>
       <div className="map-container">
       <div style={{ height: "100vh", width: "80%" }}>
