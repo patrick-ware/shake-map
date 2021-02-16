@@ -115,11 +115,11 @@ export default function App() {
  return (
     <div>
       <div className="title-block">
-        <h1 className="title"> Shake Shack </h1>
+        <h1 className="title"> Shake Map </h1>
         <h1 className="subtitle"> Mapping Earthquakes in North America using USGS</h1>
       </div>
       <div className="map-container">
-      <div style={{ height: "90vh", width: "80%" }}>
+      <div style={{ height: "94vh", width: "80%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
           defaultCenter={{ lat:38.1637, lng:-118.0837}}
