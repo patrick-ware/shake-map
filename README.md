@@ -4,11 +4,7 @@
 A React-enabled visualization of 2020 earthquake data in North America from [USGS Earthquake Catalog API](https://earthquake.usgs.gov/fdsnws/event/1/)
 
 ## Parameters
-The user can modify the `minmagnitude` and `maxmagnitude` parameters by using the inputs.
-
-The following other parameters were used to retrieve the displayed data:
-
-`starttime`: 2020-01-01
+The user can modify the `minmagnitude`, `maxmagnitude`, `starttime`, and `endtime` parameters by using the inputs.
 
 `minlatitude`: 24.396308
 
