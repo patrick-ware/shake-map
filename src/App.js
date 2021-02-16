@@ -1,14 +1,10 @@
-import React, { Component, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import useSwr from "swr";
 import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
 import "./App.css";
-import Popup from './components/Popup/Popup.js';
+//import Popup from './components/Popup/Popup.js';
 import DataModifier from './components/DataModifier/DataModifier.js';
-// bootstrap imports
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
 // Defining variables outside of App()
 const fetcher = (...args) => fetch(...args).then(response => response.json());
@@ -18,7 +14,7 @@ export default function App() {
   const mapRef = useRef();
   const [bounds, setBounds] = useState(null);
   const [zoom, setZoom] = useState(10);
-  const [popupInfo, setPopupInfo] = useState([]);
+  //const [popupInfo, setPopupInfo] = useState([]);
   //Inputs that are modified for fetch
   const [minMag, setMinMag] = useState(5.0);
   const [maxMag, setMaxMag] = useState(8.0);
@@ -54,7 +50,6 @@ export default function App() {
     let startYear = startDate.getUTCFullYear();
 
     let startTime = startYear + "-" + startMonth + "-" + startDay;
-    console.log("api start date is", startTime)
     return startTime
   }
 
@@ -65,7 +60,6 @@ export default function App() {
     let endYear = endDate.getUTCFullYear();
 
     let endTime = endYear + "-" + endMonth + "-" + endDay;
-    console.log("api end date is", endTime)
     return endTime
   }
 
@@ -109,8 +103,6 @@ export default function App() {
     zoom,
     options: { radius: 75, maxZoom: 20 }
   });
-  console.log("here is popup", popupInfo)
-    console.log("this is clusters", clusters);
 
  return (
     <div>
@@ -182,7 +174,7 @@ export default function App() {
                 key={`earthquake-${cluster.properties.earthquakeId}`}
                 lat={latitude}
                 lng={longitude}
-                onClick={()=>setPopupInfo(cluster)}
+                /*onClick={()=>setPopupInfo(cluster)}*/
               >
                 <div
                   className=""
