@@ -7,6 +7,7 @@ import DatePicker from 'react-date-picker';
 function DataModifier(props) {
   return (
     <div className="DataModifier">
+      <div className="form-title"> Modify map inputs </div>
       <form>
           <MagInput 
             label="Minimum Magnitude"
@@ -35,6 +36,7 @@ function DataModifier(props) {
             />
         </div>
       </form>
+      <div className="data-source"> Data provided by United States Geological Survey </div>
     </div>
   )
 }
