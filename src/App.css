@@ -146,6 +146,7 @@ html, body, #root, .App {
 .title-block {
   display: flex;
   align-items: center;
+  border-bottom: 2px solid #ffffff;
 }
 
 .map-container {
