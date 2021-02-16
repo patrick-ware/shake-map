@@ -125,32 +125,6 @@ html, body, #root, .App {
    margin: 0px 20px 0px 20px;
 }
 
-.DateInputContainer {
-  flex: row;
-  align-items: center;
-  display: inline-block;
-  color: black;
-  font-size:18px;
-  background: var(--color-bars);
-  border-radius: 4px;
-  width: 520px;
-  height: 35px;
-  padding-top: 6px;
-  margin: 5px 0px 5px 0px;
-}
-
-.DateInput {
-  margin-left: 5px;
-  margin-right: 5px;
-  display: inline;
-}
-
-.DateInfo {
-  display: flex;
-  color: white;
-  justify-content: center;
-}
-
 .pin-icon {
   font-size:18pt;
 }

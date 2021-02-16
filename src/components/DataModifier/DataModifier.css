@@ -14,29 +14,21 @@
   .DataModifier {
     color: white;
     font-size: 18pt;
-    text-align: right;
-    padding-left: 30px;
   }
 }
 
-.DateInputContainer {
-  flex: row;
-  align-items: center;
-  display: inline-block;
+.DateInput {
+  justify-content: center;
+  display: flex;
+  justify-content: space-evenly;
   color: black;
   font-size:18px;
   background: var(--color-bars);
   border-radius: 4px;
-  width: 520px;
+  width: 90%;
   height: 35px;
-  padding-top: 6px;
+  padding: 6px 0px 6px 0px;
   margin: 5px 0px 5px 0px;
-}
-
-.DateInput {
-  margin-left: 5px;
-  margin-right: 5px;
-  display: inline;
 }
 
 .DateInfo {

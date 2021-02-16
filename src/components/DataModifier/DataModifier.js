@@ -18,7 +18,6 @@ function DataModifier(props) {
           mag={props.maxMag}
           changeMag={props.changeMaxMag}
         />
-        <div className="DateInputContainer">
           <div className="DateInput">
             Start Date:
             <DatePicker
@@ -34,7 +33,6 @@ function DataModifier(props) {
               value={props.endDate}
               onChange={props.onEndChange}
             />
-          </div>
         </div>
       </form>
     </div>
