@@ -14,7 +14,8 @@
   .DataModifier {
     color: white;
     font-size: 18pt;
-    border: 1px solid #ffffff;
+    border: 2px solid #ffffff;
+    background-color: #475469;
   }
 }
 
