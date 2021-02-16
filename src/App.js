@@ -5,9 +5,10 @@ import useSupercluster from "use-supercluster";
 import "./App.css";
 import Popup from './components/Popup/Popup.js';
 import DataModifier from './components/DataModifier/DataModifier.js';
-// Icon imports
-import { Icon, InlineIcon } from '@iconify/react';
-import circleSlice8 from '@iconify-icons/mdi/circle-slice-8';
+// bootstrap imports
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 // Defining variables outside of App()
 const fetcher = (...args) => fetch(...args).then(response => response.json());
@@ -18,10 +19,10 @@ export default function App() {
   const [bounds, setBounds] = useState(null);
   const [zoom, setZoom] = useState(10);
   const [popupInfo, setPopupInfo] = useState([]);
-  //State for API fetch
+  //Inputs that are modified for fetch
   const [minMag, setMinMag] = useState(5.0);
   const [maxMag, setMaxMag] = useState(8.0);
-  const [startDate, setStartDate] = useState(new Date("January 1, 2021 00:00:00"));
+  const [startDate, setStartDate] = useState(new Date("January 1, 2020 00:00:00"));
   const [endDate, setEndDate] = useState(new Date());
 
   // Modify minimum magnitude
@@ -68,7 +69,7 @@ export default function App() {
     return endTime
   }
 
-  //  MAP CODE
+  //  Fetch data and format
   const url =
       "https://earthquake.usgs.gov/fdsnws/event/1/"+
       "query?format=geojson&starttime=2020-01-01&"+
@@ -101,6 +102,7 @@ export default function App() {
     }
   }));
 
+  // Use superclusters
   const { clusters, supercluster } = useSupercluster({
     points,
     bounds,
@@ -112,8 +114,10 @@ export default function App() {
 
  return (
     <div>
-      <div className="title"> Shake Shack </div>
-      <h2 className="subtitle"> Significant Earthquakes in North America</h2>    
+      <div className="title-block">
+        <h1 className="title"> Shake Shack </h1>
+        <h1 className="subtitle"> Significant Earthquakes in North America</h1>
+      </div>
       <DataModifier
         minMag={minMag}
         changeMinMag={minimumMagnitude}

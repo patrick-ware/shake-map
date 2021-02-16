@@ -22,13 +22,13 @@ html, body, #root, .App {
 @media only screen and (min-width: 300px) {
   .title {
     color: white;
-    font-size: 36pt;
+    font-size: 24pt;
     text-align: center;
   }
 
   .subtitle {
     color: white;
-    font-size: 20pt;
+    font-size: 16pt;
     font-style: italic;
     text-align: center;
   }
@@ -46,14 +46,14 @@ html, body, #root, .App {
 @media only screen and (min-width: 769px) {
   .title {
     color: white;
-    font-size: 36pt;
+    font-size: 24pt;
     text-align: left;
     padding-left: 30px;
   }
 
   .subtitle {
     color: white;
-    font-size: 20pt;
+    font-size: 16pt;
     font-style: italic;
     text-align: left;
     padding-left: 30px;
@@ -167,4 +167,9 @@ html, body, #root, .App {
   align-items: center;
   justify-content: center;
   font-size: 7pt;
+}
+
+.title-block {
+  display: inline-flex;
+  align-items: flex-end;
 }
