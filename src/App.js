@@ -116,7 +116,7 @@ export default function App() {
         <h1 className="subtitle"> Mapping Earthquakes in North America using USGS</h1>
       </div>
       <div className="map-container">
-      <div style={{ height: "94vh", width: "80%" }}>
+      <div className="map">
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_MAP_API }}
           defaultCenter={{ lat:38.1637, lng:-118.0837}}
