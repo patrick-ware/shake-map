@@ -40,6 +40,12 @@ html, body, #root, .App {
     padding-left: 30px;
     text-align: center;
   }
+
+  .map-container {
+    display: flex;
+    flex-direction: column;
+    z-index: -1;
+  }
 }
 
 /* Page element styling for larger tablets and computers */
@@ -68,6 +74,7 @@ html, body, #root, .App {
 
   .map-container {
     display: flex;
+    flex-direction: row;
     z-index: -1;
   }
 }
@@ -128,5 +135,6 @@ html, body, #root, .App {
 
 .sidebar {
   width:20%;
+  min-width: 300px;
   height:100%;
 }
