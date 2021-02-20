@@ -65,34 +65,10 @@ html, body, #root, .App {
     text-align: left;
     padding-left: 30px;
   }
-}
 
-/* Chart component styling for smartphones and tablets */
-@media only screen and (min-width: 300px) {
-  .BarChart-bar {
-    color: black;
-    text-align: center;
-    font-size: 2vw;
-    font-weight: bold;
-    background: var(--color-bars);
-    flex-grow: 1;
-    margin: 0% 1% 0% 1%;
-    transition: 0.2s;
-  }
-}
-
-/* Chart component styling for larger tablets and computers */
-@media only screen and (min-width: 769px) {
-  .BarChart-bar {
-    color: black;
-    text-align: center;
-    font-size: 2vw;
-    font-weight: bold;
-    background: var(--color-bars);
-    flex-grow: 1;
-    margin: 0% 1% 0% 1%;
-    transition: 0.2s;
-    max-width: 10%;
+  .map-container {
+    display: flex;
+    z-index: -1;
   }
 }
 
@@ -148,11 +124,6 @@ html, body, #root, .App {
   align-items: center;
   border-bottom: 2px solid #ffffff;
   height: 5vh;
-}
-
-.map-container {
-  display: flex;
-  z-index: -1;
 }
 
 .sidebar {
