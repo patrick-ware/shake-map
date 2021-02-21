@@ -20,6 +20,7 @@ export default function App() {
   const [maxMag, setMaxMag] = useState(8.0);
   const [startDate, setStartDate] = useState(new Date("January 1, 2020 00:00:00"));
   const [endDate, setEndDate] = useState(new Date());
+  //Mobile input menu
   const [showInputs, setShowInputs] = useState(false)
 
   // Modify minimum magnitude
@@ -199,8 +200,14 @@ export default function App() {
       <div className="sidebar">
         <div className="form-title"> 
           <span>Modify map inputs </span> 
-          <button className="dropdown">➤</button>
+          <button 
+            className="dropdown"
+            onClick ={()=> setShowInputs(!showInputs)}
+          >
+                  ➤
+          </button>
         </div>
+        { showInputs ? 
         <DataModifier
           minMag={minMag}
           changeMinMag={minimumMagnitude}
@@ -211,6 +218,7 @@ export default function App() {
           endDate={endDate}
           onEndChange={setEndDate}
         />
+        : null}
         </div>
       </div>
       {/*<div className="data-source"> Data provided by United States Geological Survey </div>*/}
