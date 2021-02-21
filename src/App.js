@@ -201,6 +201,10 @@ export default function App() {
         </GoogleMapReact>
       </div>
       <div className="sidebar">
+      <div className="form-title"> 
+        <span>Modify map inputs </span> 
+        <button className="dropdown">➤</button>
+      </div>
         <DataModifier
           minMag={minMag}
           changeMinMag={minimumMagnitude}

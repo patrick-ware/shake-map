@@ -7,10 +7,6 @@ import DatePicker from 'react-date-picker';
 function DataModifier(props) {
   return (
     <div className="DataModifier">
-      <div className="form-title"> 
-        <span>Modify map inputs </span> 
-        <button className="dropdown">➤</button>
-      </div>
       <form>
           <MagInput 
             label="Minimum Magnitude"
