@@ -51,12 +51,13 @@ html, body, #root, .App {
   }
 
   .map {
-    height: 50vh; 
+    height: 52vh; 
     width: 100%
   }
 
   .sidebar {
-  background-color: #475469;
+    height:40%;
+    background-color: #475469;
   }
 }
 
