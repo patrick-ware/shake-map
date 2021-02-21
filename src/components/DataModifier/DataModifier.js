@@ -35,7 +35,6 @@ function DataModifier(props) {
             />
         </div>
       </form>
-      <div className="data-source"> Data provided by United States Geological Survey </div>
     </div>
   )
 }

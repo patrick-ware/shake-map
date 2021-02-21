@@ -201,10 +201,10 @@ export default function App() {
         </GoogleMapReact>
       </div>
       <div className="sidebar">
-      <div className="form-title"> 
-        <span>Modify map inputs </span> 
-        <button className="dropdown">➤</button>
-      </div>
+        <div className="form-title"> 
+          <span>Modify map inputs </span> 
+          <button className="dropdown">➤</button>
+        </div>
         <DataModifier
           minMag={minMag}
           changeMinMag={minimumMagnitude}
@@ -217,6 +217,7 @@ export default function App() {
         />
         </div>
       </div>
+      {/*<div className="data-source"> Data provided by United States Geological Survey </div>*/}
     </div>
   );
 }

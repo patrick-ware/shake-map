@@ -67,6 +67,7 @@ html, body, #root, .App {
     color: var(--color-bars);
     background-color:#222831;
     border-radius: 4px;
+    margin-left: 5px;
   }
 }
 
@@ -119,7 +120,8 @@ html, body, #root, .App {
   .sidebar {
     width:20%;
     min-width: 300px;
-    height:100%;
+    height:94vh;
+    border-left: 3px solid #ffffff;
   }
 
   .dropdown {
@@ -181,4 +183,11 @@ html, body, #root, .App {
   font-size: 18pt;
   font-weight: 700;
   color: var(--color-bars);
+}
+
+.data-source {
+  color: black;
+  font-size: 8pt;
+  font-weight: 800;
+  height: 12px;
 }
