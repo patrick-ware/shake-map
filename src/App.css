@@ -61,13 +61,16 @@ html, body, #root, .App {
   }
 
   .dropdown {
+    display: flex;
+    text-align: center;
     font-size: 12px;
     transform: rotate(90deg);
     padding:5px;
     color: var(--color-bars);
     background-color:#222831;
     border-radius: 4px;
-    margin-left: 5px;
+    margin-left: 10px;
+    border: 1px solid var(--color-bars);
   }
 }
 
