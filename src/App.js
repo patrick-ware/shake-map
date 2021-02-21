@@ -5,8 +5,6 @@ import useSupercluster from "use-supercluster";
 import "./App.css";
 //import Popup from './components/Popup/Popup.js';
 import DataModifier from './components/DataModifier/DataModifier.js';
-import { css } from "@emotion/core";
-import ClipLoader from "react-spinners/ClipLoader";
 
 // Defining variables outside of App()
 const fetcher = (...args) => fetch(...args).then(response => response.json());
@@ -22,9 +20,7 @@ export default function App() {
   const [maxMag, setMaxMag] = useState(8.0);
   const [startDate, setStartDate] = useState(new Date("January 1, 2020 00:00:00"));
   const [endDate, setEndDate] = useState(new Date());
-  // State for loader
-  let [loading, setLoading] = useState(true);
-  let [color, setColor] = useState("#ffffff");
+  const [showInputs, setShowInputs] = useState(false)
 
   // Modify minimum magnitude
   function minimumMagnitude(ev) {
