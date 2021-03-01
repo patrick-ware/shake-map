@@ -207,8 +207,8 @@ export default function App() {
                   ➤
           </button>
         </div>
-        { showInputs ? 
         <DataModifier
+          menuToggle={showInputs}
           minMag={minMag}
           changeMinMag={minimumMagnitude}
           maxMag={maxMag}
@@ -218,7 +218,6 @@ export default function App() {
           endDate={endDate}
           onEndChange={setEndDate}
         />
-        : null}
         </div>
       </div>
       {/*<div className="data-source"> Data provided by United States Geological Survey </div>*/}
