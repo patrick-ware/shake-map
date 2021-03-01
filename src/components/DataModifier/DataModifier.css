@@ -1,6 +1,6 @@
 /* Page element styling for smartphones and tablets */
 @media only screen and (min-width: 300px) {
-  .DataModifier-small {
+  .DataModifier-mobile {
     display: flex;
     justify-content: center;
     color: white;
@@ -8,6 +8,10 @@
     background-color: #475469;
     top: 12%;
   }
+
+  .DataModifier{
+    display: none;
+   }
 
   .DateInput {
     justify-content: center;
