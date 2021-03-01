@@ -1,13 +1,33 @@
 /* Page element styling for smartphones and tablets */
 @media only screen and (min-width: 300px) {
-  .DataModifier {
-    display: none;
-    top: -100%;
-    opacity: 1;
+  .DataModifier-small {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 14pt;
+    background-color: #475469;
+    top: 12%;
   }
-  .DataModifier.active {
-    display: none;
-    color: red;
+
+  .DateInput {
+    justify-content: center;
+    display: flex;
+    justify-content: space-evenly;
+    color: black;
+    font-size:18px;
+    background: var(--color-bars);
+    border-radius: 4px;
+    width: 90%;
+    max-width: 300px;
+    height: 35px;
+    padding: 6px 0px 6px 0px;
+    margin: 5px 0px 5px 0px;
+  }
+
+  .DateInfo {
+    display: flex;
+    color: white;
+    justify-content: center;
   }
 }
 
@@ -21,25 +41,24 @@
     background-color: #475469;
     top: 12%;
   }
-}
+  .DateInput {
+    justify-content: center;
+    display: flex;
+    justify-content: space-evenly;
+    color: black;
+    font-size:18px;
+    background: var(--color-bars);
+    border-radius: 4px;
+    width: 90%;
+    max-width: 300px;
+    height: 35px;
+    padding: 6px 0px 6px 0px;
+    margin: 5px 0px 5px 0px;
+  }
 
-.DateInput {
-  justify-content: center;
-  display: flex;
-  justify-content: space-evenly;
-  color: black;
-  font-size:18px;
-  background: var(--color-bars);
-  border-radius: 4px;
-  width: 90%;
-  max-width: 300px;
-  height: 35px;
-  padding: 6px 0px 6px 0px;
-  margin: 5px 0px 5px 0px;
-}
-
-.DateInfo {
-  display: flex;
-  color: white;
-  justify-content: center;
+  .DateInfo {
+    display: flex;
+    color: white;
+    justify-content: center;
+  }
 }

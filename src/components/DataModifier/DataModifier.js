@@ -6,8 +6,8 @@ import DatePicker from 'react-date-picker';
 
 function DataModifier(props) {
   return (
-    <div className={props.menuToggle ? "DataModifier.active" : "DataModifier"}>
-      <form style={{color:"white"}}>
+    <div className={props.menuToggle ? "DataModifier-small" : "DataModifier"}>
+      <form>
           <MagInput 
             label="Minimum Magnitude"
             mag={props.minMag}
