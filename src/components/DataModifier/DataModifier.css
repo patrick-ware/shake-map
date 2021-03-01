@@ -1,25 +1,13 @@
 /* Page element styling for smartphones and tablets */
 @media only screen and (min-width: 300px) {
   .DataModifier {
-    position: absolute;
-    color: white;
-    font-size: 18pt;
-    text-align: left;
-    padding-left: 30px;
-    text-align: center;
-    z-index: 100;
-    background-color:#475469;
     display: none;
-/*    top: -100%;*/
-/*    opacity: 1;*/
-    transition: all 0.5s ease;
+    top: -100%;
+    opacity: 1;
   }
   .DataModifier.active {
-    display: flex;
-    top:0;
-    opacity: 1;
-    transition: all 0.5s ease;
-    z-index: 1;
+    display: none;
+    color: red;
   }
 }
 
@@ -31,7 +19,7 @@
     color: white;
     font-size: 14pt;
     background-color: #475469;
-    top: 10%;
+    top: 12%;
   }
 }
 
