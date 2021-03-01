@@ -27,6 +27,7 @@
 @media only screen and (min-width: 769px) {
   .DataModifier {
     display: flex;
+    justify-content: center;
     color: white;
     font-size: 14pt;
     background-color: #475469;

@@ -36,14 +36,6 @@ html, body, #root, .App {
     margin-bottom: 0px;
   }
 
-  .DataModifier {
-    color: white;
-    font-size: 18pt;
-    text-align: left;
-    padding-left: 30px;
-    text-align: center;
-  }
-
   .map-container {
     display: flex;
     flex-direction: column-reverse;
