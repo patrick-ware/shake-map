@@ -6,6 +6,8 @@
 
   .data-modifier-mobile {
     display: flex;
+    position: absolute;
+    width: 100%;
     justify-content: center;
     color: white;
     font-size: 14pt;
@@ -17,6 +19,7 @@
 
   .data-modifier {
     display: none;
+    position: relative;
     transition: all 0.5s ease;
   }
 
@@ -42,6 +45,7 @@
 
   .data-modifier {
     display: flex;
+    position: relative;
     color: white;
     font-size: 14pt;
     background-color: #475469;
