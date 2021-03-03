@@ -13,7 +13,6 @@
     top: 15%;
     opacity: 1;
     transition: all 0.5s ease;
-    width: 100%;
   }
 
   .DataModifier{
@@ -21,7 +20,7 @@
     transition: all 0.5s ease;
    }
 
-  .DateInput {
+  .date-input {
     justify-content: center;
     display: flex;
     justify-content: space-evenly;
@@ -29,9 +28,6 @@
     font-size:18px;
     background: var(--color-bars);
     border-radius: 4px;
-    width: 90%;
-    max-width: 300px;
-    height: 35px;
     padding: 6px 0px 6px 0px;
     margin: 5px 0px 5px 0px;
   }
@@ -56,18 +52,11 @@
     background-color: #475469;
 
   }
-  .DateInput {
-/*    justify-content: center;*/
-    display: flex;
-    color: black;
-    font-size:18px;
+  .date-input {
     background: var(--color-bars);
     border-radius: 4px;
-    width: 95%;
-    max-width: 300px;
     height: 35px;
-/*    padding: 6px 0px 6px 0px;*/
-/*    margin: 5px 0px 5px 0px;*/
+    padding: 4px;
   }
 
   .DateInfo {
