@@ -51,11 +51,10 @@
 
   .DataModifier {
     display: flex;
-    justify-content: center;
     color: white;
     font-size: 14pt;
     background-color: #475469;
-    top: 12%;
+
   }
   .DateInput {
     justify-content: center;
