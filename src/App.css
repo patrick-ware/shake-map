@@ -64,8 +64,6 @@ html, body, #root, .App {
   .dropdown {
     display: flex;
     text-align: center;
-    font-size: 12px;
-    transform: rotate(90deg);
     padding:5px;
     color: var(--color-bars);
     background-color:#222831;

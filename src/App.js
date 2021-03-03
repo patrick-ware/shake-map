@@ -5,7 +5,9 @@ import useSupercluster from "use-supercluster";
 import "./App.css";
 //import Popup from './components/Popup/Popup.js';
 import DataModifier from './components/DataModifier/DataModifier.js';
-
+// Icon Imports
+import { FaTimes } from 'react-icons/fa';
+import { FaAngleDown } from 'react-icons/fa';
 // Defining variables outside of App()
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 const Marker = ({ children }) => children;
@@ -204,7 +206,7 @@ export default function App() {
             className="dropdown"
             onClick ={()=> setShowInputs(!showInputs)}
           >
-          <i class="fas fa-times"></i>
+            {showInputs ? <FaTimes /> : <FaAngleDown />}
           </button>
         </div>
         <DataModifier
