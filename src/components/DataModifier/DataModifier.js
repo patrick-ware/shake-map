@@ -24,6 +24,9 @@ function DataModifier(props) {
             />
           </li>
           <li>
+          <hr className="solid"></hr>
+          </li>
+          <li>
             <div className="date-select">
               <DatePicker
                 className="date-input"
