@@ -1,5 +1,9 @@
 /* Page element styling for smartphones and tablets */
 @media only screen and (min-width: 300px) {
+  li {
+    list-style: none
+  }
+
   .DataModifier-mobile {
     display: flex;
     justify-content: center;
@@ -41,6 +45,10 @@
 
 /* Page element styling for larger tablets and computers */
 @media only screen and (min-width: 769px) {
+  li {
+    list-style: none
+  }
+
   .DataModifier {
     display: flex;
     justify-content: center;
