@@ -14,7 +14,7 @@ function MagInput(props) {
       value={props.mag} 
       onChange={props.changeMag} 
       />
-      <label htmlFor="minmag"> {props.label}:</label>
+      <label htmlFor="minmag"> {props.label}</label>
     </div>
   )
 }
