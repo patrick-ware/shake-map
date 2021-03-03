@@ -24,7 +24,7 @@ function DataModifier(props) {
             />
           </li>
           <li>
-            <div>
+            <div className="date-select">
               <DatePicker
                 className="date-input"
                 clearIcon={null}
@@ -35,15 +35,15 @@ function DataModifier(props) {
               Start Date
           </li>
           <li>
-            <div>
+            <div className="date-select">
               <DatePicker
                 className="date-input"
                 clearIcon={null}
                 value={props.endDate}
                 onChange={props.onEndChange}
               />
-            </div>
               End Date
+            </div>
           </li>
         </ul>
       </form>

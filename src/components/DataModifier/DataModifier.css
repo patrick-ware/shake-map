@@ -50,13 +50,18 @@
     color: white;
     font-size: 14pt;
     background-color: #475469;
+  }
 
+  .date-select {
+    display: inline-block;
+  
   }
   .date-input {
     background: var(--color-bars);
     border-radius: 4px;
     height: 35px;
     padding: 4px;
+    margin: 4px;
   }
 
   .DateInfo {
