@@ -4,7 +4,7 @@
     list-style: none
   }
 
-  .DataModifier-mobile {
+  .data-modifier-mobile {
     display: flex;
     justify-content: center;
     color: white;
@@ -15,27 +15,22 @@
     transition: all 0.5s ease;
   }
 
-  .DataModifier{
+  .data-modifier {
     display: none;
     transition: all 0.5s ease;
-   }
-
-  .date-input {
-    justify-content: center;
-    display: flex;
-    justify-content: space-evenly;
-    color: black;
-    font-size:18px;
-    background: var(--color-bars);
-    border-radius: 4px;
-    padding: 6px 0px 6px 0px;
-    margin: 5px 0px 5px 0px;
   }
 
-  .DateInfo {
-    display: flex;
-    color: white;
-    justify-content: center;
+  .date-select {
+    display: inline-block;
+  }
+
+  .date-input {
+    background: var(--color-bars);
+    border-radius: 4px;
+    color: black;
+    height: 35px;
+    padding: 4px;
+    margin: 4px;
   }
 }
 
@@ -45,7 +40,7 @@
     list-style: none
   }
 
-  .DataModifier {
+  .data-modifier {
     display: flex;
     color: white;
     font-size: 14pt;
@@ -54,19 +49,14 @@
 
   .date-select {
     display: inline-block;
-  
   }
+
   .date-input {
     background: var(--color-bars);
     border-radius: 4px;
+    color: black;
     height: 35px;
     padding: 4px;
     margin: 4px;
-  }
-
-  .DateInfo {
-    display: flex;
-    color: white;
-    justify-content: center;
   }
 }

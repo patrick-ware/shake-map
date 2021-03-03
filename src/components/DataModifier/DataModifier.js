@@ -6,7 +6,7 @@ import DatePicker from 'react-date-picker';
 
 function DataModifier(props) {
   return (
-    <div className={props.menuToggle ? "DataModifier-mobile" : "DataModifier"}>
+    <div className={props.menuToggle ? "data-modifier-mobile" : "data-modifier"}>
       <form>
         <ul>
           <li>
