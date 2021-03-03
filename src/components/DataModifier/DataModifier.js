@@ -1,6 +1,5 @@
 import React from 'react';
 import './DataModifier.css';
-
 import MagInput from '../MagInput/MagInput.js';
 import DatePicker from 'react-date-picker';
 

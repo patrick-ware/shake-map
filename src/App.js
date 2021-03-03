@@ -204,7 +204,7 @@ export default function App() {
             className="dropdown"
             onClick ={()=> setShowInputs(!showInputs)}
           >
-                  ➤
+          <i class="fas fa-times"></i>
           </button>
         </div>
         <DataModifier
