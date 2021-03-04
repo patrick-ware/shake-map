@@ -9,7 +9,7 @@ import { FaPencilAlt } from 'react-icons/fa';
 
 function DataModifier(props) {
   return (
-    <div className={props.menuToggle ? "data-modifier-mobile" : "data-modifier"}>
+    <div>
       <div className="form-title"> 
         <span>Modify map inputs <FaPencilAlt /></span> 
           <button 
@@ -19,49 +19,51 @@ function DataModifier(props) {
             {props.menuToggle ? <FaTimes /> : <FaAngleDown />}
           </button>
         </div>
-      <form>
-        <ul>
-          <li>
-            <MagInput 
-              label="Minimum Magnitude"
-              mag={props.minMag}
-              changeMag={props.changeMinMag}
-            />
-          </li>
-          <li>
-            <MagInput
-              label="Maximum Magnitude"
-              mag={props.maxMag}
-              changeMag={props.changeMaxMag}
-            />
-          </li>
-          <li>
-          <hr className="solid"></hr>
-          </li>
-          <li>
-            <div className="date-select">
-              <DatePicker
-                className="date-input"
-                clearIcon={null}
-                value={props.startDate}
-                onChange={props.onStartChange}
+      <div className={props.menuToggle ? "data-modifier-mobile" : "data-modifier"}>
+        <form>
+          <ul>
+            <li>
+              <MagInput 
+                label="Minimum Magnitude"
+                mag={props.minMag}
+                changeMag={props.changeMinMag}
               />
-            </div>
-              Start Date
-          </li>
-          <li>
-            <div className="date-select">
-              <DatePicker
-                className="date-input"
-                clearIcon={null}
-                value={props.endDate}
-                onChange={props.onEndChange}
+            </li>
+            <li>
+              <MagInput
+                label="Maximum Magnitude"
+                mag={props.maxMag}
+                changeMag={props.changeMaxMag}
               />
-              End Date
-            </div>
-          </li>
-        </ul>
-      </form>
+            </li>
+            <li>
+            <hr className="solid"></hr>
+            </li>
+            <li>
+              <div className="date-select">
+                <DatePicker
+                  className="date-input"
+                  clearIcon={null}
+                  value={props.startDate}
+                  onChange={props.onStartChange}
+                />
+              </div>
+                Start Date
+            </li>
+            <li>
+              <div className="date-select">
+                <DatePicker
+                  className="date-input"
+                  clearIcon={null}
+                  value={props.endDate}
+                  onChange={props.onEndChange}
+                />
+                End Date
+              </div>
+            </li>
+          </ul>
+        </form>
+      </div>
     </div>
   )
 }

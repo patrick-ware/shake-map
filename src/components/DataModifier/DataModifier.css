@@ -20,7 +20,9 @@
   .data-modifier {
     display: none;
     position: relative;
-    transition: all 0.5s ease;
+    color: white;
+    font-size: 14pt;
+    background-color: #475469;
   }
 
   .date-select {
