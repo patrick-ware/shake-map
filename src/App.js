@@ -8,6 +8,7 @@ import DataModifier from './components/DataModifier/DataModifier.js';
 // Icon Imports
 import { FaTimes } from 'react-icons/fa';
 import { FaAngleDown } from 'react-icons/fa';
+import { FaPencilAlt } from 'react-icons/fa';
 // Defining variables outside of App()
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 const Marker = ({ children }) => children;
@@ -201,7 +202,7 @@ export default function App() {
       </div>
       <div className="sidebar">
         <div className="form-title"> 
-          <span>Modify map inputs </span> 
+          <span>Modify map inputs <FaPencilAlt /></span> 
           <button 
             className="dropdown"
             onClick ={()=> setShowInputs(!showInputs)}
