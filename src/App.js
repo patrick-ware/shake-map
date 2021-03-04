@@ -5,10 +5,6 @@ import useSupercluster from "use-supercluster";
 import "./App.css";
 //import Popup from './components/Popup/Popup.js';
 import DataModifier from './components/DataModifier/DataModifier.js';
-// Icon Imports
-import { FaTimes } from 'react-icons/fa';
-import { FaAngleDown } from 'react-icons/fa';
-import { FaPencilAlt } from 'react-icons/fa';
 // Defining variables outside of App()
 const fetcher = (...args) => fetch(...args).then(response => response.json());
 const Marker = ({ children }) => children;
@@ -24,7 +20,7 @@ export default function App() {
   const [startDate, setStartDate] = useState(new Date("January 1, 2020 00:00:00"));
   const [endDate, setEndDate] = useState(new Date());
   //Mobile input menu
-  const [showInputs, setShowInputs] = useState(false)
+  const [menuToggle, setMenuToggle] = useState(false)
 
   // Modify minimum magnitude
   function minimumMagnitude(ev) {
@@ -201,17 +197,9 @@ export default function App() {
         </GoogleMapReact>
       </div>
       <div className="sidebar">
-        <div className="form-title"> 
-          <span>Modify map inputs <FaPencilAlt /></span> 
-          <button 
-            className="dropdown"
-            onClick ={()=> setShowInputs(!showInputs)}
-          >
-            {showInputs ? <FaTimes /> : <FaAngleDown />}
-          </button>
-        </div>
         <DataModifier
-          menuToggle={showInputs}
+          menuToggle={menuToggle}
+          setMenuToggle={setMenuToggle}
           minMag={minMag}
           changeMinMag={minimumMagnitude}
           maxMag={maxMag}

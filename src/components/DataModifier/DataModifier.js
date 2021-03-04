@@ -2,10 +2,23 @@ import React from 'react';
 import './DataModifier.css';
 import MagInput from '../MagInput/MagInput.js';
 import DatePicker from 'react-date-picker';
+// Icon Imports
+import { FaTimes } from 'react-icons/fa';
+import { FaAngleDown } from 'react-icons/fa';
+import { FaPencilAlt } from 'react-icons/fa';
 
 function DataModifier(props) {
   return (
     <div className={props.menuToggle ? "data-modifier-mobile" : "data-modifier"}>
+      <div className="form-title"> 
+        <span>Modify map inputs <FaPencilAlt /></span> 
+          <button 
+            className="dropdown"
+            onClick ={()=> props.setMenuToggle(!props.menuToggle)}
+          >
+            {props.menuToggle ? <FaTimes /> : <FaAngleDown />}
+          </button>
+        </div>
       <form>
         <ul>
           <li>
