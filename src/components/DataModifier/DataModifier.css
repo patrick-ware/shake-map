@@ -35,6 +35,26 @@
     padding: 4px;
     margin: 4px;
   }
+
+  .form-title {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px 10px 0px;
+    font-size: 16pt;
+    font-weight: 700;
+    color: var(--color-bars);
+  }
+
+  .dropdown {
+    display: flex;
+    text-align: center;
+    padding:5px;
+    color: var(--color-bars);
+    background-color:#222831;
+    border-radius: 4px;
+    margin-left: 10px;
+    border: 1px solid var(--color-bars);
+  }
 }
 
 /* Page element styling for larger tablets and computers */
@@ -62,5 +82,18 @@
     height: 35px;
     padding: 4px;
     margin: 4px;
+  }
+
+  .form-title {
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px 10px 0px;
+    font-size: 18pt;
+    font-weight: 700;
+    color: var(--color-bars);
+  }
+
+  .dropdown {
+    display: none;
   }
 }

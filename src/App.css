@@ -51,26 +51,6 @@ html, body, #root, .App {
     height:40%;
     background-color: #475469;
   }
-
-  .form-title {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0px 10px 0px;
-    font-size: 16pt;
-    font-weight: 700;
-    color: var(--color-bars);
-  }
-
-  .dropdown {
-    display: flex;
-    text-align: center;
-    padding:5px;
-    color: var(--color-bars);
-    background-color:#222831;
-    border-radius: 4px;
-    margin-left: 10px;
-    border: 1px solid var(--color-bars);
-  }
 }
 
 /* For larger tablets and computers */
@@ -117,19 +97,6 @@ html, body, #root, .App {
     min-width: 300px;
     height:94vh;
     border-left: 3px solid #ffffff;
-  }
-
-  .form-title {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0px 10px 0px;
-    font-size: 18pt;
-    font-weight: 700;
-    color: var(--color-bars);
-  }
-
-  .dropdown {
-    display: none;
   }
 }
 
