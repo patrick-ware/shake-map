@@ -73,6 +73,10 @@
     background-color: #475469;
   }
 
+  .data-modifier-mobile {
+    display: none;
+  }
+
   .date-select {
     display: inline-block;
   }
