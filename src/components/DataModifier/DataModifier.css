@@ -13,16 +13,18 @@
     font-size: 14pt;
     background-color: #475469;
     bottom: 0;
+    overflow: hidden;
     opacity: 1;
     transition: all 0.5s ease;
   }
 
   .data-modifier {
     display: none;
-    position: relative;
+    position: absolute;
     color: white;
     font-size: 14pt;
     background-color: #475469;
+    opacity: 1;
   }
 
   .date-select {
