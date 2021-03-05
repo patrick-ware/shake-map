@@ -74,7 +74,11 @@
   }
 
   .data-modifier-mobile {
-    display: none;
+    display: flex;
+    position: relative;
+    color: white;
+    font-size: 14pt;
+    background-color: #475469;
   }
 
   .date-select {
