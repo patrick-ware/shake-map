@@ -11,12 +11,12 @@ function DataModifier(props) {
   return (
     <div>
       <div className="form-title"> 
-        <span>Modify map inputs <FaPencilAlt /></span> 
+        <span>Modify map inputs</span> 
           <button 
             className="dropdown"
             onClick ={()=> props.setMenuToggle(!props.menuToggle)}
           >
-            {props.menuToggle ? <FaTimes /> : <FaAngleDown />}
+            {props.menuToggle ? <FaTimes /> : <FaPencilAlt />}
           </button>
         </div>
       <div className={props.menuToggle ? "data-modifier-mobile" : "data-modifier"}>
