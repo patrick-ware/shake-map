@@ -13,7 +13,7 @@ function DataModifier(props) {
       <div className="form-title"> 
         <span>Modify map inputs</span> 
           <button 
-            className="dropdown"
+            className="button-open"
             onClick ={()=> props.setMenuToggle(!props.menuToggle)}
           >
             {props.menuToggle ? <FaTimes /> : <FaPencilAlt />}
@@ -63,6 +63,14 @@ function DataModifier(props) {
             </li>
           </ul>
         </form>
+        <div className="close">
+          <button 
+            className="button-close"
+            onClick ={()=> props.setMenuToggle(!props.menuToggle)}
+          >
+            <FaTimes />
+          </button>
+        </div>
       </div>
     </div>
   )
