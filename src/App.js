@@ -211,7 +211,6 @@ export default function App() {
         />
         </div>
       </div>
-      {/*<div className="data-source"> Data provided by United States Geological Survey </div>*/}
     </div>
   );
 }
