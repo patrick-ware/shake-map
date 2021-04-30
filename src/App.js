@@ -66,16 +66,16 @@ export default function App() {
 
   //  Fetch data and format
   const url =
-      "https://earthquake.usgs.gov/fdsnws/event/1/"+
-      "query?format=geojson&starttime=2020-01-01&"+
-      "starttime="+ formatStartDate() +
-      "&endtime=" + formatEndDate() + 
-      "&minmagnitude=" + minMag + 
-      "&maxmagnitude=" + maxMag + 
-      "&minlatitude=24.396308"+
-      "&minlongitude=-124.848974"+
-      "&maxlatitude=49.384358"+
-      "&maxlongitude=-66.885444";
+      "https://earthquake.usgs.gov/fdsnws/event/1/"
+      +"query?format=geojson&starttime=2020-01-01&"
+      +"starttime="+ formatStartDate() 
+      +"&endtime=" + formatEndDate()
+      +"&minmagnitude=" + minMag
+      +"&maxmagnitude=" + maxMag 
+      +"&minlatitude=24.396308"
+      +"&minlongitude=-124.848974"
+      +"&maxlatitude=49.384358"
+      +"&maxlongitude=-66.885444";
 
   const { data, error } = useSwr(url, { fetcher });
   const earthquakes = data && !error ? data.features :[];
