@@ -148,13 +148,15 @@ export default function App() {
                   <div
                     className=""
                     style={{
-                      color:"#F2A365",
-                      backgroundColor:"#222831",
+                      color:"white",
+                      backgroundColor:"#2a2a2a",
                       padding:"5px",
                       borderRadius:"50%",
+                      border:"1px solid #222831",
                       width: `${20 + (pointCount / points.length) * 10}px`,
                       height: `${20 + (pointCount / points.length) * 10}px`,
                       lineHeight: `${20 + (pointCount / points.length) * 10}px`,
+                      opacity: "70%",
                     }}
                     onClick={() => {
                       const expansionZoom = Math.min(
