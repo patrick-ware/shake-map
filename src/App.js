@@ -153,7 +153,8 @@ export default function App() {
                       padding:"5px",
                       borderRadius:"50%",
                       width: `${20 + (pointCount / points.length) * 10}px`,
-                      height: `${20 + (pointCount / points.length) * 10}px`
+                      height: `${20 + (pointCount / points.length) * 10}px`,
+                      lineHeight: `${20 + (pointCount / points.length) * 10}px`,
                     }}
                     onClick={() => {
                       const expansionZoom = Math.min(
